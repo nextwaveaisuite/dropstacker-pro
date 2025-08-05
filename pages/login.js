@@ -17,10 +17,10 @@ export default function Login() {
       <h1>Login</h1>
       <form onSubmit={handleLogin}>
         <input type="email" placeholder="Email" value={email}
-          onChange={(e) => setEmail(e.target.value)} required /><br /><br />
+          onChange={(e) => setEmail(e.target.value)} required />
         <input type="password" placeholder="Password" value={password}
-          onChange={(e) => setPassword(e.target.value)} required /><br /><br />
-        <button type="submit">Login</button>
+          onChange={(e) => setPassword(e.target.value)} required />
+        <button type="submit" style={{ width: "100%", marginTop: "1rem" }}>Login</button>
       </form>
     </div>
   );
