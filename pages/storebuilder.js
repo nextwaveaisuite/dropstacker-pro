@@ -1,10 +1,28 @@
+import { useState } from "react";
+
 export default function StoreBuilder() {
+  const [products, setProducts] = useState([]);
+  const [newProduct, setNewProduct] = useState("");
+
+  function addProduct() {
+    if (newProduct.trim() === "") return;
+    setProducts([...products, { name: newProduct }]);
+    setNewProduct("");
+  }
+
   return (
-    <div className="store-builder">
-      <h1>🛍 Store Builder</h1>
-      <p>Import products, customize your store, and publish in minutes.</p>
-      <button className="btn-dark" style={{ marginRight: '1rem' }}>Add Product</button>
-      <button className="btn-primary">Publish Store</button>
+    <div className="container">
+      <h1>Store Builder</h1>
+      <input type="text" placeholder="Product Name" value={newProduct}
+        onChange={(e) => setNewProduct(e.target.value)} />
+      <button onClick={addProduct}>Add Product</button>
+
+      <h2>Products</h2>
+      <ul>
+        {products.map((p, i) => (
+          <li key={i}>{p.name}</li>
+        ))}
+      </ul>
     </div>
   );
-  }
+    }
