@@ -13,16 +13,19 @@ export default function StoreBuilder() {
   return (
     <div className="container">
       <h1>Store Builder</h1>
-      <input type="text" placeholder="Product Name" value={newProduct}
-        onChange={(e) => setNewProduct(e.target.value)} />
-      <button onClick={addProduct}>Add Product</button>
-
+      <div className="card">
+        <input type="text" placeholder="Product Name" value={newProduct}
+          onChange={(e) => setNewProduct(e.target.value)} />
+        <button onClick={addProduct} style={{ marginTop: "0.5rem" }}>Add Product</button>
+      </div>
       <h2>Products</h2>
-      <ul>
+      <div className="grid">
         {products.map((p, i) => (
-          <li key={i}>{p.name}</li>
+          <div key={i} className="card">
+            {p.name}
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
     }
