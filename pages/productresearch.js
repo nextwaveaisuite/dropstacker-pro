@@ -8,13 +8,16 @@ export default function ProductResearch() {
   return (
     <div className="container">
       <h1>Product Research</h1>
-      <ul>
+      <div className="grid">
         {sampleProducts.map((p, i) => (
-          <li key={i}>
-            {p.name} - ${p.price} - Margin: {p.margin}
-          </li>
+          <div key={i} className="card">
+            <h2>{p.name}</h2>
+            <p>Price: ${p.price}</p>
+            <p>Margin: {p.margin}</p>
+            <button>View Supplier</button>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
     }
