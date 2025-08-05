@@ -82,4 +82,29 @@ input:focus {
 }
 
 /* Dashboard widget grid */
-.grid
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Footer */
+footer {
+  background-color: #0d1b2a;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+/* Alternate Section */
+.section-dark {
+  background-color: #0d1b2a;
+  color: white;
+  padding: 2rem 0;
+}
+
+.section-light {
+  background-color: #e6f7f9;
+  padding: 2rem 0;
+}
