@@ -1,13 +1,24 @@
 import Link from "next/link";
 
 export default function Dashboard() {
+  const widgets = [
+    { title: "Store Builder", link: "/storebuilder", desc: "Build your online store with AI-powered tools." },
+    { title: "Product Research", link: "/productresearch", desc: "Find winning products with high profit margins." },
+    { title: "Supplier Finder", link: "/suppliers", desc: "Connect with trusted global suppliers." }
+  ];
+
   return (
     <div className="container">
       <h1>Your Dashboard</h1>
-      <p>Manage your stores, research products, and connect with suppliers.</p>
-      <Link href="/storebuilder"><button>Go to Store Builder</button></Link>
-      <Link href="/productresearch"><button style={{ marginLeft: "10px" }}>Product Research</button></Link>
-      <Link href="/suppliers"><button style={{ marginLeft: "10px" }}>Supplier Finder</button></Link>
+      <div className="grid">
+        {widgets.map((w, i) => (
+          <div key={i} className="card">
+            <h2>{w.title}</h2>
+            <p>{w.desc}</p>
+            <Link href={w.link}><button>Open</button></Link>
+          </div>
+        ))}
+      </div>
     </div>
   );
-}
+                      }
