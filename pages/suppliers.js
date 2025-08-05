@@ -8,13 +8,15 @@ export default function Suppliers() {
   return (
     <div className="container">
       <h1>Supplier Finder</h1>
-      <ul>
+      <div className="grid">
         {suppliers.map((s, i) => (
-          <li key={i}>
-            {s.name} - {s.location}
-          </li>
+          <div key={i} className="card">
+            <h2>{s.name}</h2>
+            <p>Location: {s.location}</p>
+            <button>Contact Supplier</button>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
     }
