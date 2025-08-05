@@ -1,5 +1,3 @@
-import '../styles/theme.css';
-
 export default function Login() {
   return (
     <div>
