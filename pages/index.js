@@ -4,8 +4,10 @@ export default function Home() {
   return (
     <section className="section-dark" style={{ textAlign: "center" }}>
       <div className="container">
-        <h1 style={{ fontSize: "2.5rem" }}>🚀 Welcome to DropStacker Pro</h1>
-        <p style={{ fontSize: "1.2rem", marginBottom: "2rem" }}>
+        <h1 style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>
+          🚀 Welcome to <span style={{ color: "#ffbf00" }}>DropStacker Pro</span>
+        </h1>
+        <p style={{ fontSize: "1.2rem", maxWidth: "650px", margin: "0 auto 2rem" }}>
           The AI‑powered dropshipping suite that helps you research winning products,
           connect suppliers, and launch high‑converting stores — all in minutes.
         </p>
@@ -13,9 +15,9 @@ export default function Home() {
           <button style={{ marginRight: "10px" }}>Get Started</button>
         </Link>
         <Link href="/login">
-          <button>Login</button>
+          <a style={{ color: "#ffbf00", fontWeight: "600" }}>Login</a>
         </Link>
       </div>
     </section>
   );
-  }
+}
