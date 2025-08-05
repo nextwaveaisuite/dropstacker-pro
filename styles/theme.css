@@ -6,11 +6,11 @@
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background-color: #f4f8fb; /* very light aqua hint */
+  background-color: #ffffff;
   color: #333;
 }
 
-/* Containers */
+/* Container */
 .container {
   max-width: 1100px;
   margin: auto;
@@ -43,14 +43,14 @@ button:hover {
 /* Links */
 a {
   text-decoration: none;
-  color: #0d1b2a;
-}
-
-a:hover {
   color: #ffbf00;
 }
 
-/* Card style (Dashboard, Store Builder, etc.) */
+a:hover {
+  color: #e6ac00;
+}
+
+/* Card style */
 .card {
   background: white;
   border-radius: 10px;
@@ -81,7 +81,7 @@ input:focus {
   box-shadow: 0 0 4px rgba(255, 191, 0, 0.4);
 }
 
-/* Dashboard widget grid */
+/* Grid layout */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -97,14 +97,14 @@ footer {
   margin-top: 2rem;
 }
 
-/* Alternate Section */
+/* Hero Section */
 .section-dark {
   background-color: #0d1b2a;
   color: white;
-  padding: 2rem 0;
+  padding: 3rem 0;
 }
 
 .section-light {
-  background-color: #e6f7f9; /* Aqua highlight */
+  background-color: #f4f8fb;
   padding: 2rem 0;
-  }
+    }
