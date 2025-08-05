@@ -1,7 +1,5 @@
-/* components/Navigation.module.css */
-
 .nav {
-  background-color: #0d1b2a; /* Deep Navy */
+  background-color: #0d1b2a;
   color: white;
   padding: 0.8rem 0;
   box-shadow: 0 2px 5px rgba(0,0,0,0.15);
@@ -36,10 +34,9 @@
 }
 
 .links li a:hover {
-  color: #f4a261; /* Amber Gold hover */
+  color: #f4a261;
 }
 
-/* Mobile */
 .hamburger {
   display: none;
   font-size: 1.6rem;
@@ -63,4 +60,4 @@
   .hamburger {
     display: block;
   }
-}
+    }
