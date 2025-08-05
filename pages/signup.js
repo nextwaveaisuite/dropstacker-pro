@@ -1,21 +1,27 @@
+import { useState } from "react";
+import { useRouter } from "next/router";
+
 export default function Signup() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const router = useRouter();
+
+  function handleSignup(e) {
+    e.preventDefault();
+    localStorage.setItem("user", email);
+    router.push("/dashboard");
+  }
+
   return (
-    <div>
-      <h1 style={{ textAlign: 'center', color: '#0A3D62', paddingTop: '2rem' }}>
-        Create Your DropStacker Pro Account
-      </h1>
-      <form className="form-container">
-        <label>Name:</label>
-        <input type="text" required />
-        <label>Email:</label>
-        <input type="email" required />
-        <label>Password:</label>
-        <input type="password" required />
+    <div className="container">
+      <h1>Sign Up</h1>
+      <form onSubmit={handleSignup}>
+        <input type="email" placeholder="Email" value={email}
+          onChange={(e) => setEmail(e.target.value)} required /><br /><br />
+        <input type="password" placeholder="Password" value={password}
+          onChange={(e) => setPassword(e.target.value)} required /><br /><br />
         <button type="submit">Sign Up</button>
       </form>
-      <p style={{ textAlign: 'center' }}>
-        Already have an account? <a href="/login">Login</a>
-      </p>
     </div>
   );
-          }
+    }
