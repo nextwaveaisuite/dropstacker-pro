@@ -1,33 +1,85 @@
+/* styles/theme.css */
+
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #f8f9fa;
+  font-family: 'Inter', sans-serif;
+  background-color: #e6f7f9; /* Light Aqua background for contrast */
   color: #333;
 }
 
-h1, h2, h3 {
-  margin: 0 0 10px;
+/* Containers */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 1.5rem;
 }
 
+/* Headings */
+h1, h2, h3 {
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #0d1b2a; /* Deep Navy */
+}
+
+/* Buttons */
 button {
   background-color: #f4a261; /* Amber Gold */
   color: white;
   border: none;
   padding: 10px 16px;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background 0.3s ease;
 }
 
 button:hover {
   background-color: #e08e3c;
 }
 
+/* Links */
 a {
   text-decoration: none;
+  color: #0d1b2a;
 }
 
-.container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 1rem;
+a:hover {
+  color: #f4a261;
 }
+
+/* Card style (Dashboard, Store Builder, etc.) */
+.card {
+  background: white;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  margin-bottom: 1.5rem;
+}
+
+/* Forms */
+form {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 0.5rem 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #f4a261;
+  box-shadow: 0 0 4px rgba(244, 162, 97, 0.4);
+}
+
+/* Dashboard widget grid */
+.grid
