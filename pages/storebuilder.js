@@ -1,0 +1,1 @@
+export default function StoreBuilder(){return(<div><h1>Store Builder</h1><p>Example Stores will go here</p></div>)}

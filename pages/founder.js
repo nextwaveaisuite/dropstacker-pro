@@ -1,0 +1,1 @@
+export default function Founder(){return(<div><h1>Owner's Back Office</h1></div>)}

@@ -1,0 +1,1 @@
+export default function Home(){return(<div><h1>Welcome to DropStacker Pro</h1><p>Landing Page</p></div>)}
