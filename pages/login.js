@@ -1,19 +1,27 @@
+import { useState } from "react";
+import { useRouter } from "next/router";
+
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const router = useRouter();
+
+  function handleLogin(e) {
+    e.preventDefault();
+    localStorage.setItem("user", email);
+    router.push("/dashboard");
+  }
+
   return (
-    <div>
-      <h1 style={{ textAlign: 'center', color: '#0A3D62', paddingTop: '2rem' }}>
-        Login to DropStacker Pro
-      </h1>
-      <form className="form-container">
-        <label>Email:</label>
-        <input type="email" required />
-        <label>Password:</label>
-        <input type="password" required />
+    <div className="container">
+      <h1>Login</h1>
+      <form onSubmit={handleLogin}>
+        <input type="email" placeholder="Email" value={email}
+          onChange={(e) => setEmail(e.target.value)} required /><br /><br />
+        <input type="password" placeholder="Password" value={password}
+          onChange={(e) => setPassword(e.target.value)} required /><br /><br />
         <button type="submit">Login</button>
       </form>
-      <p style={{ textAlign: 'center' }}>
-        Don't have an account? <a href="/signup">Sign Up</a>
-      </p>
     </div>
   );
-          }
+    }
