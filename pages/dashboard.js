@@ -1,24 +1,28 @@
 import Link from "next/link";
 
 export default function Dashboard() {
-  const widgets = [
-    { title: "Store Builder", link: "/storebuilder", desc: "Build your online store with AI-powered tools." },
-    { title: "Product Research", link: "/productresearch", desc: "Find winning products with high profit margins." },
-    { title: "Supplier Finder", link: "/suppliers", desc: "Connect with trusted global suppliers." }
+  const features = [
+    { title: "Store Builder", desc: "Build your online store with AI-powered tools.", link: "/storebuilder" },
+    { title: "Product Research", desc: "Find high-margin winning products fast.", link: "/productresearch" },
+    { title: "Supplier Finder", desc: "Connect with trusted global suppliers.", link: "/suppliers" }
   ];
 
   return (
-    <div className="container">
-      <h1>Your Dashboard</h1>
-      <div className="grid">
-        {widgets.map((w, i) => (
-          <div key={i} className="card">
-            <h2>{w.title}</h2>
-            <p>{w.desc}</p>
-            <Link href={w.link}><button>Open</button></Link>
-          </div>
-        ))}
+    <section className="section-dark">
+      <div className="container">
+        <h1 style={{ color: "#ffbf00", textAlign: "center" }}>Your Dashboard</h1>
+        <div className="grid" style={{ marginTop: "2rem" }}>
+          {features.map((f, i) => (
+            <div key={i} className="card" style={{ textAlign: "center" }}>
+              <h2 style={{ color: "#0d1b2a" }}>{f.title}</h2>
+              <p>{f.desc}</p>
+              <Link href={f.link}>
+                <button>Open</button>
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
-                      }
+}
