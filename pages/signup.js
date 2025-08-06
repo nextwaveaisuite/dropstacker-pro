@@ -13,15 +13,17 @@ export default function Signup() {
   }
 
   return (
-    <div className="container">
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSignup}>
-        <input type="email" placeholder="Email" value={email}
-          onChange={(e) => setEmail(e.target.value)} required />
-        <input type="password" placeholder="Password" value={password}
-          onChange={(e) => setPassword(e.target.value)} required />
-        <button type="submit" style={{ width: "100%", marginTop: "1rem" }}>Sign Up</button>
-      </form>
-    </div>
+    <section className="section-dark" style={{ textAlign: "center" }}>
+      <div className="container" style={{ maxWidth: "500px" }}>
+        <h1 style={{ color: "#ffbf00" }}>Create Your Account</h1>
+        <form onSubmit={handleSignup} style={{ marginTop: "1.5rem" }}>
+          <input type="email" placeholder="Email" value={email}
+            onChange={(e) => setEmail(e.target.value)} required />
+          <input type="password" placeholder="Password" value={password}
+            onChange={(e) => setPassword(e.target.value)} required />
+          <button type="submit" style={{ width: "100%", marginTop: "1rem" }}>Sign Up</button>
+        </form>
+      </div>
+    </section>
   );
 }
