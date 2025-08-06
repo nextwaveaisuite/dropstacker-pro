@@ -5,7 +5,7 @@ export default function Home() {
     <section className="section-dark" style={{ textAlign: "center" }}>
       <div className="container">
         <h1 style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>
-          🚀 Welcome to <span style={{ color: "#ffbf00" }}>Welcome to DropStacker Pro</span>
+          <span style={{ color: "#ffbf00" }}>Welcome to DropStacker Pro</span>
         </h1>
         <p style={{ fontSize: "1.2rem", maxWidth: "650px", margin: "0 auto 2rem" }}>
           The AI‑powered dropshipping suite that helps you research winning products,
