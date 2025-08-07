@@ -1,78 +1,72 @@
-import Head from 'next/head';
+// pages/index.js
 
 export default function Home() {
   return (
-    <>
-      <Head>
-        <title>DropStacker Pro</title>
-      </Head>
-      <main style={{ maxWidth: '600px', margin: '0 auto', padding: '2rem' }}>
-        <h1>Welcome to DropStacker Pro</h1>
-        <p>Join our list for exclusive early access and updates.</p>
-
-        {/* 🔒 AWeber Opt-in Form */}
-        <div className="aweber-form-wrapper">
-          <div className="AW-Form-183149529"></div>
-        </div>
-      </main>
-
-      {/* AWeber Embed Script */}
-      <script
-        type="text/javascript"
-        dangerouslySetInnerHTML={{
-          __html: `
-            (function(d, s, id) {
-              var js, fjs = d.getElementsByTagName(s)[0];
-              if (d.getElementById(id)) return;
-              js = d.createElement(s); js.id = id;
-              js.src = "//forms.aweber.com/form/29/183149529.js";
-              fjs.parentNode.insertBefore(js, fjs);
-            }(document, "script", "aweber-wjs-1qwb5hvl8"));
-          `,
-        }}
-      />
-
-      {/* Style Overrides */}
-      <style jsx>{`
-        .aweber-form-wrapper * {
-          font-family: 'Inter', sans-serif !important;
-          font-size: 16px !important;
-          color: #fff !important;
-          box-sizing: border-box;
+    <div style={{ maxWidth: '500px', margin: '50px auto', fontFamily: 'Verdana, sans-serif' }}>
+      <style>{`
+        .aweber-form input[type="email"] {
+          width: 100%;
+          padding: 10px;
+          font-size: 16px;
+          margin-bottom: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
         }
-
-        .aweber-form-wrapper input[type='text'],
-        .aweber-form-wrapper input[type='email'] {
-          width: 100% !important;
-          padding: 12px !important;
-          margin-bottom: 1rem !important;
-          border-radius: 8px !important;
-          border: 1px solid #444 !important;
-          background: #1f1f1f !important;
-        }
-
-        .aweber-form-wrapper input[type='submit'] {
-          background: #f5c518 !important;
-          color: #000 !important;
-          padding: 12px 20px !important;
-          border: none !important;
-          border-radius: 8px !important;
-          font-weight: bold !important;
+        .aweber-form input[type="submit"] {
+          width: 100%;
+          padding: 12px;
+          background-color: #088239;
+          color: white;
+          font-weight: bold;
+          border: none;
+          border-radius: 5px;
           cursor: pointer;
-          width: 100% !important;
         }
-
-        .aweber-form-wrapper form {
-          background: transparent !important;
-          border: none !important;
-          padding: 0 !important;
-        }
-
-        .aweber-form-wrapper h2,
-        .aweber-form-wrapper p {
-          display: none !important;
+        .aweber-form input[type="submit"]:hover {
+          opacity: 0.9;
         }
       `}</style>
-    </>
+
+      <h2 style={{ textAlign: 'center' }}>Welcome to DropStacker Pro</h2>
+      <p style={{ textAlign: 'center' }}>Enter your details below to get instant access:</p>
+
+      <form
+        method="post"
+        className="aweber-form"
+        acceptCharset="UTF-8"
+        action="https://www.aweber.com/scripts/addlead.pl"
+      >
+        {/* Hidden AWeber fields */}
+        <input type="hidden" name="meta_web_form_id" value="641659250" />
+        <input type="hidden" name="listname" value="awlist6902603" />
+        <input
+          type="hidden"
+          name="redirect"
+          value="https://dropstacker-pro.vercel.app/dashboard"
+        />
+        <input type="hidden" name="meta_adtracking" value="Drop_Stacker_Pro" />
+        <input type="hidden" name="meta_message" value="1" />
+        <input type="hidden" name="meta_required" value="email" />
+        <input type="hidden" name="meta_tooltip" value="" />
+
+        {/* Email Field */}
+        <label htmlFor="awf_field-118259477">Email:</label>
+        <input
+          className="text"
+          id="awf_field-118259477"
+          type="email"
+          name="email"
+          required
+        />
+
+        {/* Submit Button */}
+        <input
+          name="submit"
+          className="submit"
+          type="submit"
+          value="Get Instant Access"
+        />
+      </form>
+    </div>
   );
 }
