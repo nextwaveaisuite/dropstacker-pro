@@ -1,23 +1,54 @@
-import Link from "next/link";
+// pages/index.js
+import React from 'react';
+import Link from 'next/link';
+import Navigation from '../components/Navigation';
 
 export default function Home() {
   return (
-    <section className="section-dark" style={{ textAlign: "center" }}>
-      <div className="container">
-        <h1 style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>
-          <span style={{ color: "#ffbf00" }}>Welcome to DropStacker Pro</span>
+    <div style={{ backgroundColor: '#0f0f0f', color: '#fff', minHeight: '100vh' }}>
+      <Navigation />
+      <main style={{ padding: '4rem 2rem', textAlign: 'center' }}>
+        <h1 style={{ fontSize: '3rem', color: '#f5c518', marginBottom: '1rem' }}>
+          🚀 Welcome to DropStacker Pro
         </h1>
-        <p style={{ fontSize: "1.2rem", maxWidth: "650px", margin: "0 auto 2rem" }}>
+        <p style={{ fontSize: '1.25rem', color: '#b3b3b3', maxWidth: '600px', margin: '0 auto 2rem' }}>
           The AI‑powered dropshipping suite that helps you research winning products,
           connect suppliers, and launch high‑converting stores — all in minutes.
         </p>
-        <Link href="/signup">
-          <button style={{ marginRight: "10px" }}>Get Started</button>
-        </Link>
-        <Link href="/login">
-          <button>Login</button>
-        </Link>
-      </div>
-    </section>
+
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
+          <Link href="/signup">
+            <button style={buttonStylePrimary}>Get Started</button>
+          </Link>
+          <Link href="/login">
+            <button style={buttonStyleSecondary}>Login</button>
+          </Link>
+        </div>
+      </main>
+    </div>
   );
 }
+
+const buttonStylePrimary = {
+  backgroundColor: '#f5c518',
+  color: '#000',
+  padding: '0.75rem 2rem',
+  fontSize: '1rem',
+  fontWeight: 'bold',
+  border: 'none',
+  borderRadius: '8px',
+  cursor: 'pointer',
+  transition: 'all 0.3s ease'
+};
+
+const buttonStyleSecondary = {
+  backgroundColor: 'transparent',
+  color: '#f5c518',
+  padding: '0.75rem 2rem',
+  fontSize: '1rem',
+  fontWeight: 'bold',
+  border: '2px solid #f5c518',
+  borderRadius: '8px',
+  cursor: 'pointer',
+  transition: 'all 0.3s ease'
+};
