@@ -1,28 +1,70 @@
-import Link from "next/link";
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { supabase } from '../lib/supabaseClient';
 
 export default function Dashboard() {
-  const features = [
-    { title: "Store Builder", desc: "Build your online store with AI-powered tools.", link: "/storebuilder" },
-    { title: "Product Research", desc: "Find high-margin winning products fast.", link: "/productresearch" },
-    { title: "Supplier Finder", desc: "Connect with trusted global suppliers.", link: "/suppliers" }
-  ];
+  const [user, setUser] = useState(null);
+  const router = useRouter();
+
+  useEffect(() => {
+    const getUser = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+
+      if (!user) {
+        router.push('/login'); // Redirect to login if not logged in
+      } else {
+        setUser(user);
+      }
+    };
+
+    getUser();
+  }, []);
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    router.push('/login');
+  };
+
+  if (!user) return null; // Hide content while loading
 
   return (
-    <section className="section-dark">
-      <div className="container">
-        <h1 style={{ color: "#ffbf00", textAlign: "center" }}>Your Dashboard</h1>
-        <div className="grid" style={{ marginTop: "2rem" }}>
-          {features.map((f, i) => (
-            <div key={i} className="card" style={{ textAlign: "center" }}>
-              <h2 style={{ color: "#0d1b2a" }}>{f.title}</h2>
-              <p>{f.desc}</p>
-              <Link href={f.link}>
-                <button>Open</button>
-              </Link>
-            </div>
-          ))}
-        </div>
+    <div className="dashboard">
+      <h1>Welcome to DropStacker Pro</h1>
+      <p>👋 Logged in as: <strong>{user.email}</strong></p>
+
+      <div className="actions">
+        <button onClick={() => router.push('/storebuilder')}>🚀 Go to Store Builder</button>
+        <button onClick={handleLogout}>Logout</button>
       </div>
-    </section>
+
+      <style jsx>{`
+        .dashboard {
+          max-width: 600px;
+          margin: 60px auto;
+          padding: 40px;
+          background: #1c1b18;
+          color: #f8cc47;
+          border-radius: 16px;
+          text-align: center;
+          box-shadow: 0 0 20px rgba(248, 204, 71, 0.15);
+        }
+        .actions {
+          margin-top: 30px;
+        }
+        button {
+          margin: 10px;
+          padding: 12px 24px;
+          font-weight: bold;
+          border: none;
+          border-radius: 8px;
+          background: #f8cc47;
+          color: #000;
+          cursor: pointer;
+        }
+        button:hover {
+          opacity: 0.85;
+        }
+      `}</style>
+    </div>
   );
 }
