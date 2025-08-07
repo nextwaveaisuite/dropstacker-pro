@@ -1,1 +1,0 @@
-export default function TooltipOnboarding(){return(<div>Tooltip Onboarding</div>)}
