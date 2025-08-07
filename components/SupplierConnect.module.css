@@ -1,1 +1,51 @@
+.container {
+  color: #fff;
+  padding: 2rem;
+  background-color: #0f0f0f;
+}
 
+h2 {
+  color: #f5c518;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background-color: #1a1a1a;
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid #333;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.1);
+}
+
+.card h3 {
+  color: #f5c518;
+  font-size: 1.1rem;
+}
+
+.link {
+  display: inline-block;
+  margin: 0.75rem 0;
+  color: #40e0d0;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.button {
+  background-color: #f5c518;
+  color: #000;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #e6b800;
+}
