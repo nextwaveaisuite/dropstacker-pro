@@ -1,54 +1,78 @@
-// pages/index.js
-import React from 'react';
-import Link from 'next/link';
-import Navigation from '../components/Navigation';
+import Head from 'next/head';
 
 export default function Home() {
   return (
-    <div style={{ backgroundColor: '#0f0f0f', color: '#fff', minHeight: '100vh' }}>
-      <Navigation />
-      <main style={{ padding: '4rem 2rem', textAlign: 'center' }}>
-        <h1 style={{ fontSize: '3rem', color: '#f5c518', marginBottom: '1rem' }}>
-          🚀 Welcome to DropStacker Pro
-        </h1>
-        <p style={{ fontSize: '1.25rem', color: '#b3b3b3', maxWidth: '600px', margin: '0 auto 2rem' }}>
-          The AI‑powered dropshipping suite that helps you research winning products,
-          connect suppliers, and launch high‑converting stores — all in minutes.
-        </p>
+    <>
+      <Head>
+        <title>DropStacker Pro</title>
+      </Head>
+      <main style={{ maxWidth: '600px', margin: '0 auto', padding: '2rem' }}>
+        <h1>Welcome to DropStacker Pro</h1>
+        <p>Join our list for exclusive early access and updates.</p>
 
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
-          <Link href="/signup">
-            <button style={buttonStylePrimary}>Get Started</button>
-          </Link>
-          <Link href="/login">
-            <button style={buttonStyleSecondary}>Login</button>
-          </Link>
+        {/* 🔒 AWeber Opt-in Form */}
+        <div className="aweber-form-wrapper">
+          <div className="AW-Form-183149529"></div>
         </div>
       </main>
-    </div>
+
+      {/* AWeber Embed Script */}
+      <script
+        type="text/javascript"
+        dangerouslySetInnerHTML={{
+          __html: `
+            (function(d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) return;
+              js = d.createElement(s); js.id = id;
+              js.src = "//forms.aweber.com/form/29/183149529.js";
+              fjs.parentNode.insertBefore(js, fjs);
+            }(document, "script", "aweber-wjs-1qwb5hvl8"));
+          `,
+        }}
+      />
+
+      {/* Style Overrides */}
+      <style jsx>{`
+        .aweber-form-wrapper * {
+          font-family: 'Inter', sans-serif !important;
+          font-size: 16px !important;
+          color: #fff !important;
+          box-sizing: border-box;
+        }
+
+        .aweber-form-wrapper input[type='text'],
+        .aweber-form-wrapper input[type='email'] {
+          width: 100% !important;
+          padding: 12px !important;
+          margin-bottom: 1rem !important;
+          border-radius: 8px !important;
+          border: 1px solid #444 !important;
+          background: #1f1f1f !important;
+        }
+
+        .aweber-form-wrapper input[type='submit'] {
+          background: #f5c518 !important;
+          color: #000 !important;
+          padding: 12px 20px !important;
+          border: none !important;
+          border-radius: 8px !important;
+          font-weight: bold !important;
+          cursor: pointer;
+          width: 100% !important;
+        }
+
+        .aweber-form-wrapper form {
+          background: transparent !important;
+          border: none !important;
+          padding: 0 !important;
+        }
+
+        .aweber-form-wrapper h2,
+        .aweber-form-wrapper p {
+          display: none !important;
+        }
+      `}</style>
+    </>
   );
 }
-
-const buttonStylePrimary = {
-  backgroundColor: '#f5c518',
-  color: '#000',
-  padding: '0.75rem 2rem',
-  fontSize: '1rem',
-  fontWeight: 'bold',
-  border: 'none',
-  borderRadius: '8px',
-  cursor: 'pointer',
-  transition: 'all 0.3s ease'
-};
-
-const buttonStyleSecondary = {
-  backgroundColor: 'transparent',
-  color: '#f5c518',
-  padding: '0.75rem 2rem',
-  fontSize: '1rem',
-  fontWeight: 'bold',
-  border: '2px solid #f5c518',
-  borderRadius: '8px',
-  cursor: 'pointer',
-  transition: 'all 0.3s ease'
-};
