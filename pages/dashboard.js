@@ -1,34 +1,40 @@
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
 import { supabase } from '../lib/supabaseClient';
+import AuthGuard from '../components/AuthGuard';
 import Navigation from '../components/Navigation';
-import StoreBuilder from '../components/StoreBuilder';
-import SupplierConnect from '../components/SupplierConnect';
+import ProductFinder from '../components/ProductFinder';
 
 const Dashboard = () => {
-  const router = useRouter();
-  const [user, setUser] = useState(null);
+  const [userEmail, setUserEmail] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const session = supabase.auth.getSession().then(({ data: { session } }) => {
-      if (!session) {
-        router.push('/login');
-      } else {
-        setUser(session.user);
+    const fetchUser = async () => {
+      const { data: { user }, error } = await supabase.auth.getUser();
+      if (user) {
+        setUserEmail(user.email);
       }
-    });
-  }, [router]);
+      setLoading(false);
+    };
+
+    fetchUser();
+  }, []);
+
+  if (loading) {
+    return <div>Loading dashboard...</div>;
+  }
 
   return (
-    <div style={{ backgroundColor: '#0f0f0f', color: '#fff', minHeight: '100vh' }}>
+    <AuthGuard>
       <Navigation />
       <main style={{ padding: '2rem' }}>
-        <h1 style={{ color: '#f5c518' }}>🚀 Welcome to DropStacker Pro</h1>
-        <p>Your AI-powered dropshipping business suite.</p>
-        <StoreBuilder />
-        <SupplierConnect />
+        <h1>Welcome to DropStacker Pro</h1>
+        <p>You’re logged in as: <strong>{userEmail}</strong></p>
+
+        {/* ✅ Product Finder Component */}
+        <ProductFinder />
       </main>
-    </div>
+    </AuthGuard>
   );
 };
 
