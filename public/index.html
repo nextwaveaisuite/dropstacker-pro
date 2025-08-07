@@ -1,19 +1,42 @@
-<!-- Squeeze Page HTML with AWeber -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DropStacker Pro</title>
-  <link rel="stylesheet" href="styles/main.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DropStacker Pro — Instant Access</title>
+  <link rel="stylesheet" href="styles/squeeze.css" />
 </head>
 <body>
-  <h1>Welcome to DropStacker Pro</h1>
-  <!-- Inserted AWeber form -->
-  <form method="post" class="af-form-wrapper" accept-charset="UTF-8" action="https://www.aweber.com/scripts/addlead.pl">
-    <input type="hidden" name="redirect" value="/thankyou.html" />
-    <input type="email" name="email" placeholder="Enter your email" required>
-    <input type="submit" value="Get Instant Access">
-  </form>
+  <div class="squeeze-container">
+    <div class="squeeze-box">
+      <h1>DropStacker Pro</h1>
+      <p class="subheadline">Launch Your Dropshipping Empire in Minutes</p>
+
+      <!-- AWeber RAW HTML START -->
+      <form method="post" class="af-form-wrapper" accept-charset="UTF-8" action="https://www.aweber.com/scripts/addlead.pl">
+        <div style="display: none;">
+          <input type="hidden" name="meta_web_form_id" value="641659250" />
+          <input type="hidden" name="meta_split_id" value="" />
+          <input type="hidden" name="listname" value="awlist6902603" />
+          <input type="hidden" name="redirect" value="https://dropstacker-pro.vercel.app/dashboard" />
+          <input type="hidden" name="meta_adtracking" value="Drop_Stacker_Pro" />
+          <input type="hidden" name="meta_message" value="1" />
+          <input type="hidden" name="meta_required" value="email" />
+          <input type="hidden" name="meta_tooltip" value="" />
+        </div>
+
+        <div class="form-group">
+          <label for="awf_field-118259477">Email</label>
+          <input class="text" id="awf_field-118259477" type="email" name="email" required />
+        </div>
+
+        <div class="form-group">
+          <input name="submit" class="submit" type="submit" value="Get Instant Access" />
+        </div>
+      </form>
+      <!-- AWeber RAW HTML END -->
+
+    </div>
+  </div>
 </body>
 </html>
