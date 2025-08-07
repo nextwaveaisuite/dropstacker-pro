@@ -1,0 +1,49 @@
+/* components/ProductFinder.module.css */
+.container {
+  background-color: #0f0f0f;
+  color: #f5c518;
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.heading {
+  font-size: 1.75rem;
+  margin-bottom: 1.2rem;
+  color: #f5c518;
+}
+
+.input {
+  padding: 0.6rem 1rem;
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  background-color: #1e1e1e;
+  color: white;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background-color: #1a1a1a;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid #f5c51855;
+  text-align: left;
+  color: white;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.image {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 0.8rem;
+}
