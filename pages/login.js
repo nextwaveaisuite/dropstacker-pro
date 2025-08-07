@@ -2,15 +2,15 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { supabase } from '../lib/supabaseClient';
 
-export default function Signup() {
+export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const router = useRouter();
 
-  const handleSignup = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    const { error } = await supabase.auth.signUp({
+    const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
@@ -18,15 +18,14 @@ export default function Signup() {
     if (error) {
       setError(error.message);
     } else {
-      alert('Signup successful! Please check your email to confirm.');
-      router.push('/login');
+      router.push('/dashboard');
     }
   };
 
   return (
     <div className="auth-container">
-      <h2>Create Your Account</h2>
-      <form onSubmit={handleSignup}>
+      <h2>Login to DropStacker Pro</h2>
+      <form onSubmit={handleLogin}>
         <input
           type="email"
           placeholder="Email"
@@ -41,7 +40,7 @@ export default function Signup() {
           required
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Sign Up</button>
+        <button type="submit">Login</button>
       </form>
       {error && <p className="error">{error}</p>}
       <style jsx>{`
