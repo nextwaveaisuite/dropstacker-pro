@@ -1,46 +1,32 @@
 // pages/dashboard.js
-import React, { useEffect } from 'react';
-import { useRouter } from 'next/router';
-import { supabase } from '../lib/supabaseClient';
+import React from 'react';
 import Navigation from '../components/Navigation';
+import AuthGuard from '../components/AuthGuard';
 import ProductFinder from '../components/ProductFinder';
 import SupplierConnect from '../components/SupplierConnect';
 import StoreBuilder from '../components/StoreBuilder';
 
 export default function Dashboard() {
-  const router = useRouter();
-
-  useEffect(() => {
-    const checkSession = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (!session) {
-        router.push('/login');
-      }
-    };
-    checkSession();
-  }, [router]);
-
   return (
-    <div>
-      <Navigation />
-      <main style={{ padding: '2rem', backgroundColor: '#0f0f0f', minHeight: '100vh' }}>
-        <h1 style={{ color: '#f5c518', fontSize: '2rem', marginBottom: '1.5rem' }}>
-          🚀 DropStacker Pro Dashboard
-        </h1>
+    <AuthGuard>
+      <div style={{ backgroundColor: '#0f0f0f', color: '#fff', minHeight: '100vh' }}>
+        <Navigation />
+        <main style={{ padding: '2rem' }}>
+          <h1 style={{ fontSize: '2rem', color: '#f5c518', marginBottom: '1rem' }}>📊 Dashboard</h1>
+          
+          <section style={{ marginBottom: '2rem' }}>
+            <ProductFinder />
+          </section>
 
-        {/* 🔍 Product Research Tool */}
-        <ProductFinder />
+          <section style={{ marginBottom: '2rem' }}>
+            <SupplierConnect />
+          </section>
 
-        <hr style={{ margin: '3rem 0', borderColor: '#333' }} />
-
-        {/* 🔗 Supplier Connection Tool */}
-        <SupplierConnect />
-
-        <hr style={{ margin: '3rem 0', borderColor: '#333' }} />
-
-        {/* 🛠️ Store Builder Tool */}
-        <StoreBuilder />
-      </main>
-    </div>
+          <section>
+            <StoreBuilder />
+          </section>
+        </main>
+      </div>
+    </AuthGuard>
   );
 }
