@@ -2,8 +2,9 @@
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { supabase } from '../lib/supabaseClient';
-import ProductFinder from '../components/ProductFinder';
 import Navigation from '../components/Navigation';
+import ProductFinder from '../components/ProductFinder';
+import SupplierConnect from '../components/SupplierConnect';
 
 export default function Dashboard() {
   const router = useRouter();
@@ -12,7 +13,7 @@ export default function Dashboard() {
     const checkSession = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) {
-        router.push('/login'); // Redirect to login if not authenticated
+        router.push('/login'); // Redirect to login if not logged in
       }
     };
     checkSession();
@@ -26,8 +27,13 @@ export default function Dashboard() {
           🚀 DropStacker Pro Dashboard
         </h1>
 
-        {/* Product Finder Module */}
+        {/* 🔍 Product Research Tool */}
         <ProductFinder />
+
+        <hr style={{ margin: '3rem 0', borderColor: '#333' }} />
+
+        {/* 🔗 Supplier Connection Tool */}
+        <SupplierConnect />
       </main>
     </div>
   );
