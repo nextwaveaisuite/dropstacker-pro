@@ -1,66 +1,70 @@
 // components/ProductFinder.js
-import React, { useState } from 'react';
+
+import { useState } from 'react';
 import styles from './ProductFinder.module.css';
 
-const demoProducts = [
+const mockProducts = [
   {
     id: 1,
-    name: 'Wireless Earbuds',
-    price: 12.99,
-    margin: 68,
-    rating: 4.7,
-    category: 'Electronics',
-    image: 'https://via.placeholder.com/150',
+    title: 'LED Dog Collar',
+    description: 'Keep your dog safe at night with this glowing collar.',
+    price: '$12.99',
   },
   {
     id: 2,
-    name: 'Portable Blender',
-    price: 24.50,
-    margin: 73,
-    rating: 4.5,
-    category: 'Kitchen',
-    image: 'https://via.placeholder.com/150',
+    title: 'Posture Corrector',
+    description: 'Fix your posture while working or sitting at a desk.',
+    price: '$19.99',
   },
   {
     id: 3,
-    name: 'Yoga Mat Pro',
-    price: 18.99,
-    margin: 60,
-    rating: 4.8,
-    category: 'Fitness',
-    image: 'https://via.placeholder.com/150',
+    title: 'Reusable Makeup Remover Pads',
+    description: 'Eco-friendly, washable makeup pads.',
+    price: '$9.99',
   },
 ];
 
 export default function ProductFinder() {
-  const [filter, setFilter] = useState('');
+  const [query, setQuery] = useState('');
+  const [results, setResults] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  const filtered = filter
-    ? demoProducts.filter((p) =>
-        p.category.toLowerCase().includes(filter.toLowerCase())
-      )
-    : demoProducts;
+  const handleSearch = () => {
+    setLoading(true);
+
+    setTimeout(() => {
+      // Mock filtering
+      const filtered = mockProducts.filter(p =>
+        p.title.toLowerCase().includes(query.toLowerCase())
+      );
+      setResults(filtered);
+      setLoading(false);
+    }, 1000);
+  };
 
   return (
-    <div className={styles.container}>
-      <h2 className={styles.heading}>🔥 Winning Product Finder</h2>
+    <div className={styles.finder}>
+      <h2>🔍 Find Winning Dropshipping Products</h2>
       <input
-        className={styles.input}
-        placeholder="Filter by category (e.g., Fitness, Kitchen)..."
-        value={filter}
-        onChange={(e) => setFilter(e.target.value)}
+        type="text"
+        placeholder="e.g. dog hoodie"
+        value={query}
+        onChange={e => setQuery(e.target.value)}
       />
-      <div className={styles.grid}>
-        {filtered.map((product) => (
-          <div className={styles.card} key={product.id}>
-            <img src={product.image} alt={product.name} className={styles.image} />
-            <h3>{product.name}</h3>
-            <p><strong>Price:</strong> ${product.price}</p>
-            <p><strong>Profit Margin:</strong> {product.margin}%</p>
-            <p><strong>Rating:</strong> {product.rating}⭐</p>
-            <p><strong>Category:</strong> {product.category}</p>
+      <button onClick={handleSearch}>Search</button>
+
+      {loading && <p>Loading products...</p>}
+
+      <div className={styles.results}>
+        {results.map(product => (
+          <div key={product.id} className={styles.card}>
+            <h3>{product.title}</h3>
+            <p>{product.description}</p>
+            <strong>{product.price}</strong>
           </div>
         ))}
+
+        {results.length === 0 && !loading && <p>No results found.</p>}
       </div>
     </div>
   );
