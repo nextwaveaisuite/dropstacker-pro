@@ -5,6 +5,7 @@ import { supabase } from '../lib/supabaseClient';
 import Navigation from '../components/Navigation';
 import ProductFinder from '../components/ProductFinder';
 import SupplierConnect from '../components/SupplierConnect';
+import StoreBuilder from '../components/StoreBuilder';
 
 export default function Dashboard() {
   const router = useRouter();
@@ -13,7 +14,7 @@ export default function Dashboard() {
     const checkSession = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) {
-        router.push('/login'); // Redirect to login if not logged in
+        router.push('/login');
       }
     };
     checkSession();
@@ -34,6 +35,11 @@ export default function Dashboard() {
 
         {/* 🔗 Supplier Connection Tool */}
         <SupplierConnect />
+
+        <hr style={{ margin: '3rem 0', borderColor: '#333' }} />
+
+        {/* 🛠️ Store Builder Tool */}
+        <StoreBuilder />
       </main>
     </div>
   );
