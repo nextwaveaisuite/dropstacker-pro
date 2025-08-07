@@ -1,63 +1,35 @@
-.nav {
-  background-color: #0d1b2a;
-  color: white;
-  padding: 0.8rem 0;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
+.navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 1rem 2rem;
+  background-color: #0f0f0f;
+  color: #fff;
 }
 
-.brand a {
-  font-size: 1.4rem;
+.logo a {
+  font-size: 1.5rem;
+  color: #f5c518;
+  text-decoration: none;
   font-weight: bold;
-  text-decoration: none;
-  color: white;
 }
 
-.links {
-  list-style: none;
+.navLinks {
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
-.links li a {
-  text-decoration: none;
-  color: white;
-  transition: color 0.3s ease;
-}
-
-.links li a:hover {
-  color: #f4a261;
-}
-
-.hamburger {
-  display: none;
-  font-size: 1.6rem;
+.logoutBtn {
+  background-color: #f5c518;
+  color: #0f0f0f;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
   cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
 }
 
-@media (max-width: 768px) {
-  .links {
-    display: none;
-    flex-direction: column;
-    background: #0d1b2a;
-    position: absolute;
-    top: 60px;
-    right: 0;
-    width: 200px;
-    padding: 1rem;
-  }
-  .links.show {
-    display: flex;
-  }
-  .hamburger {
-    display: block;
-  }
-    }
+.logoutBtn:hover {
+  background-color: #ffdb4d;
+}
