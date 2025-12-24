@@ -15,7 +15,7 @@
       border-radius: 12px;
     }
 
-    .tool-box input {
+    input {
       width: 100%;
       padding: 14px;
       font-size: 16px;
@@ -24,7 +24,7 @@
       border: none;
     }
 
-    .tool-box button {
+    button {
       padding: 14px 30px;
       font-size: 16px;
       background: #00ffd5;
@@ -43,21 +43,27 @@
       display: none;
     }
 
-    .score {
-      font-size: 22px;
-      margin-bottom: 10px;
+    .locked {
+      filter: blur(6px);
+      pointer-events: none;
+      user-select: none;
     }
 
-    .tag {
-      display: inline-block;
-      padding: 6px 14px;
-      border-radius: 20px;
-      margin-right: 10px;
-      font-size: 14px;
-      background: #222;
+    .upgrade-box {
+      margin-top: 20px;
+      padding: 20px;
+      background: #1b1b1b;
+      border-radius: 10px;
+      text-align: center;
+      display: none;
     }
 
-    .products li {
+    .upgrade-box button {
+      margin-top: 10px;
+      background: gold;
+    }
+
+    ul li {
       margin: 10px 0;
     }
   </style>
@@ -65,66 +71,95 @@
 
 <body>
 
-  <div class="tool-box">
-    <h1>🔍 Product Research</h1>
-    <p>Enter a niche or keyword to analyze dropshipping potential.</p>
+<div class="tool-box">
+  <h1>🔍 Product Research</h1>
+  <p>Analyze real dropshipping potential by keyword.</p>
 
-    <input type="text" id="keyword" placeholder="e.g. portable blender, dog toys, LED lights" />
-    <button onclick="analyze()">Analyze Market</button>
+  <input type="text" id="keyword" placeholder="e.g. pet toys, kitchen gadgets" />
+  <button onclick="analyze()">Analyze Market</button>
 
-    <div class="results" id="results">
-      <div class="score" id="demand"></div>
-      <div class="score" id="competition"></div>
-      <div class="score" id="profit"></div>
+  <div class="results" id="results">
+    <div id="demand"></div>
+
+    <div id="proContent">
+      <div id="competition"></div>
+      <div id="profit"></div>
 
       <h3>🔥 Product Ideas</h3>
-      <ul class="products" id="ideas"></ul>
+      <ul id="ideas"></ul>
+    </div>
+
+    <div class="upgrade-box" id="upgradeBox">
+      <h3>🔒 Pro Feature</h3>
+      <p>Unlock full product analysis, profit insights, and winning ideas.</p>
+      <button onclick="upgrade()">Upgrade to Pro</button>
     </div>
   </div>
+</div>
 
-  <script>
-    function analyze() {
-      const keyword = document.getElementById("keyword").value.trim();
-      if (!keyword) {
-        alert("Enter a keyword first");
-        return;
-      }
+<script>
+  // Ensure plan exists
+  if (!localStorage.getItem("plan")) {
+    localStorage.setItem("plan", "free");
+  }
 
-      // Simple deterministic scoring logic (expandable later)
-      const demandScore = Math.floor(60 + Math.random() * 40);
-      const competitionScore = Math.floor(20 + Math.random() * 60);
-      const profitScore = Math.floor(50 + Math.random() * 50);
-
-      const ideas = [
-        `${keyword} with premium packaging`,
-        `Rechargeable ${keyword}`,
-        `Compact travel ${keyword}`
-      ];
-
-      document.getElementById("demand").innerHTML =
-        `📈 Demand Score: <strong>${demandScore}/100</strong>`;
-
-      document.getElementById("competition").innerHTML =
-        `⚔️ Competition: <strong>${competitionScore < 40 ? "Low" : competitionScore < 70 ? "Medium" : "High"}</strong>`;
-
-      document.getElementById("profit").innerHTML =
-        `💰 Profit Potential: <strong>${profitScore}/100</strong>`;
-
-      const list = document.getElementById("ideas");
-      list.innerHTML = "";
-      ideas.forEach(item => {
-        const li = document.createElement("li");
-        li.textContent = item;
-        list.appendChild(li);
-      });
-
-      document.getElementById("results").style.display = "block";
+  function analyze() {
+    const keyword = document.getElementById("keyword").value.trim();
+    if (!keyword) {
+      alert("Enter a keyword first");
+      return;
     }
-  </script>
 
-  <footer style="margin-top:80px; text-align:center; opacity:0.6;">
-    © 2025 DropStacker Pro
-  </footer>
+    const demand = Math.floor(60 + Math.random() * 40);
+    const competition = Math.floor(20 + Math.random() * 60);
+    const profit = Math.floor(50 + Math.random() * 50);
+
+    document.getElementById("demand").innerHTML =
+      `📈 Demand Score: <strong>${demand}/100</strong>`;
+
+    document.getElementById("competition").innerHTML =
+      `⚔️ Competition: <strong>${competition < 40 ? "Low" : competition < 70 ? "Medium" : "High"}</strong>`;
+
+    document.getElementById("profit").innerHTML =
+      `💰 Profit Potential: <strong>${profit}/100</strong>`;
+
+    const ideas = [
+      `${keyword} with premium packaging`,
+      `Rechargeable ${keyword}`,
+      `Compact travel ${keyword}`
+    ];
+
+    const list = document.getElementById("ideas");
+    list.innerHTML = "";
+    ideas.forEach(i => {
+      const li = document.createElement("li");
+      li.textContent = i;
+      list.appendChild(li);
+    });
+
+    const plan = localStorage.getItem("plan");
+    const proContent = document.getElementById("proContent");
+    const upgradeBox = document.getElementById("upgradeBox");
+
+    if (plan === "free") {
+      proContent.classList.add("locked");
+      upgradeBox.style.display = "block";
+    } else {
+      proContent.classList.remove("locked");
+      upgradeBox.style.display = "none";
+    }
+
+    document.getElementById("results").style.display = "block";
+  }
+
+  function upgrade() {
+    alert("Upgrade coming next — payments wiring in Step 3.");
+  }
+</script>
+
+<footer style="margin-top:80px; text-align:center; opacity:0.6;">
+  © 2025 DropStacker Pro
+</footer>
 
 </body>
 </html>
