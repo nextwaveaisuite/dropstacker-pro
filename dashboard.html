@@ -2,62 +2,137 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Dashboard – DropStacker Pro</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/styles/main.css" />
-  <script src="/scripts/auth.js"></script>
+  <title>Dashboard — DropStacker Pro</title>
+
+  <link rel="stylesheet" href="styles/main.css" />
+  <script src="scripts/auth.js" defer></script>
+
+  <style>
+    .dashboard {
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 20px;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .nav a {
+      margin-right: 15px;
+      text-decoration: none;
+      color: #00ffd5;
+      font-weight: bold;
+    }
+
+    .tools {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+
+    .tool-card {
+      background: #111;
+      padding: 25px;
+      border-radius: 12px;
+    }
+
+    .tool-card h3 {
+      margin-top: 0;
+    }
+
+    .tool-card a {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #00ffd5;
+      color: #000;
+      border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    /* UPGRADE CTA */
+    .upgrade-cta {
+      margin-top: 60px;
+      padding: 35px;
+      background: #111;
+      border-radius: 14px;
+      text-align: center;
+      border: 1px solid #222;
+    }
+
+    .upgrade-cta a {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 14px 32px;
+      background: gold;
+      color: #000;
+      font-weight: bold;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+  </style>
 </head>
 
-<body onload="requireAccess()">
+<body>
 
-<header class="app-header" style="justify-content:center;">
-  <h1>🚀 DropStacker Pro</h1>
-</header>
+  <div class="dashboard">
 
-<main class="dashboard-container" style="text-align:center;">
-
-  <section class="tool-box">
-    <h2>Welcome to Your Dashboard</h2>
-    <p>Your command center for building a profitable dropshipping business.</p>
-  </section>
-
-  <section class="dashboard-grid">
-
-    <div class="dashboard-card">
-      <h3>🔍 Product Research</h3>
-      <p>Find high-margin winning products.</p>
-      <a href="/tools/productresearch.html" class="primary-btn">Open Tool</a>
+    <!-- TOP NAV -->
+    <div class="nav">
+      <h1>📦 DropStacker Pro</h1>
+      <div>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="#" onclick="logout()">Logout</a>
+      </div>
     </div>
 
-    <div class="dashboard-card">
-      <h3>🏗️ Store Builder</h3>
-      <p>Create a conversion-focused store.</p>
-      <a href="/tools/storebuilder.html" class="primary-btn">Open Tool</a>
+    <!-- INTRO -->
+    <p>Welcome to your DropStacker Pro dashboard. Start by choosing a tool below.</p>
+
+    <!-- TOOLS -->
+    <div class="tools">
+
+      <div class="tool-card">
+        <h3>🔍 Product Research</h3>
+        <p>Find high-demand, profitable products to sell.</p>
+        <a href="tools/productresearch.html">Open Tool</a>
+      </div>
+
+      <div class="tool-card">
+        <h3>🏗 Store Builder</h3>
+        <p>Plan and structure your dropshipping store.</p>
+        <a href="tools/storebuilder.html">Open Tool</a>
+      </div>
+
+      <div class="tool-card">
+        <h3>🚚 Supplier Finder</h3>
+        <p>Discover reliable suppliers and fulfilment options.</p>
+        <a href="tools/suppliers.html">Open Tool</a>
+      </div>
+
     </div>
 
-    <div class="dashboard-card">
-      <h3>🌍 Supplier Finder</h3>
-      <p>Connect with reliable suppliers.</p>
-      <a href="/tools/suppliers.html" class="primary-btn">Open Tool</a>
+    <!-- UPGRADE CTA (ADDED & WIRED) -->
+    <div class="upgrade-cta">
+      <h2>🚀 Ready to Go Pro?</h2>
+      <p>
+        Unlock full product research, profit insights, and all premium tools.
+      </p>
+      <a href="pricing.html">View Pricing</a>
     </div>
 
-  </section>
-
-  <div style="margin-top:2.5rem;">
-    <button class="tool-btn secondary" onclick="logoutUser()">Log Out</button>
   </div>
 
-</main>
-
-<footer class="app-footer">
-  <nav style="margin-bottom:0.75rem;">
-    <a href="/founder.html">About</a> ·
-    <a href="/privacy.html">Privacy</a> ·
-    <a href="/terms.html">Terms</a> ·
-    <a href="/disclaimer.html">Disclaimer</a>
-  </nav>
-  © 2025 DropStacker Pro. All Rights Reserved.
-</footer>
+  <footer style="margin-top:80px; text-align:center; opacity:0.6;">
+    © 2025 DropStacker Pro
+  </footer>
 
 </body>
 </html>
