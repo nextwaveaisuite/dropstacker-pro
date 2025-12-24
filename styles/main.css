@@ -21,6 +21,27 @@ body.dark {
   color: #f5c518;
 }
 
+.locked {
+  opacity: 0.45;
+  pointer-events: none;
+  filter: grayscale(100%);
+}
+
+.locked-label {
+  color: #f5c518;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.upgrade-note {
+  background: rgba(245, 197, 24, 0.08);
+  border: 1px solid #f5c518;
+  padding: 1rem;
+  margin-top: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
 .nav-links a {
   margin-right: 1.25rem;
   color: #ccc;
