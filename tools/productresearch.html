@@ -1,189 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
   <title>Product Research — DropStacker Pro</title>
-  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/main.css">
   <script src="../scripts/auth.js" defer></script>
-
-  <style>
-    .tool-box {
-      max-width: 820px;
-      margin: 60px auto;
-      background: #111;
-      padding: 40px;
-      border-radius: 12px;
-    }
-
-    input {
-      width: 100%;
-      padding: 14px;
-      font-size: 16px;
-      margin-bottom: 20px;
-      border-radius: 6px;
-      border: none;
-    }
-
-    button {
-      padding: 14px 30px;
-      font-size: 16px;
-      background: #00ffd5;
-      color: #000;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .results {
-      margin-top: 40px;
-      background: #0b0b0b;
-      padding: 25px;
-      border-radius: 10px;
-      display: none;
-    }
-
-    .locked {
-      filter: blur(6px);
-      pointer-events: none;
-      user-select: none;
-    }
-
-    .upgrade-box {
-      margin-top: 30px;
-      padding: 25px;
-      background: #1b1b1b;
-      border-radius: 12px;
-      text-align: center;
-      display: none;
-    }
-
-    .upgrade-box a {
-      display: inline-block;
-      margin: 10px;
-      padding: 12px 24px;
-      border-radius: 6px;
-      font-weight: bold;
-      text-decoration: none;
-      color: #000;
-    }
-
-    .stripe {
-      background: #6772e5;
-      color: #fff;
-    }
-
-    .paypal {
-      background: gold;
-    }
-
-    ul li {
-      margin: 10px 0;
-    }
-  </style>
 </head>
 
 <body>
 
-<div class="tool-box">
-  <h1>🔍 Product Research</h1>
-  <p>Analyze real dropshipping potential by keyword.</p>
+<!-- TOP NAV -->
+<div style="padding:20px;background:#111;">
+  <a href="../dashboard.html">🏠 Dashboard</a> |
+  <a href="../pricing.html">💲 Pricing</a> |
+  <a href="javascript:history.back()">🔙 Back</a>
+</div>
 
-  <input type="text" id="keyword" placeholder="e.g. pet toys, kitchen gadgets" />
+<div style="max-width:800px;margin:50px auto;background:#111;padding:40px;border-radius:12px;">
+
+  <h1>🔍 Product Research</h1>
+  <p><strong>How to use:</strong> Enter a product keyword to estimate demand, competition, and profit potential.</p>
+
+  <input id="keyword" placeholder="e.g. belts, pet toys, phone mounts">
   <button onclick="analyze()">Analyze Market</button>
 
-  <div class="results" id="results">
-    <div id="demand"></div>
-
-    <div id="proContent">
-      <div id="competition"></div>
-      <div id="profit"></div>
-
-      <h3>🔥 Product Ideas</h3>
-      <ul id="ideas"></ul>
-    </div>
-
-    <div class="upgrade-box" id="upgradeBox">
-      <h3>🚀 Unlock DropStacker Pro</h3>
-      <p>Get full market analysis, profit scoring, and winning product ideas.</p>
-
-      <!-- STRIPE HOSTED CHECKOUT -->
-      <a class="stripe" href="https://YOUR-STRIPE-CHECKOUT-LINK" onclick="unlockPro()">
-        Pay with Stripe
-      </a>
-
-      <!-- PAYPAL HOSTED CHECKOUT -->
-      <a class="paypal" href="https://YOUR-PAYPAL-CHECKOUT-LINK" onclick="unlockPro()">
-        Pay with PayPal
-      </a>
-
-      <p style="margin-top:10px; opacity:0.6;">Instant access after payment</p>
-    </div>
+  <div id="results" style="margin-top:30px;display:none;">
+    <div id="output"></div>
   </div>
 </div>
 
 <script>
-  if (!localStorage.getItem("plan")) {
-    localStorage.setItem("plan", "free");
+  function hashScore(str, min, max) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      hash = str.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    return Math.abs(hash % (max - min)) + min;
   }
 
   function analyze() {
-    const keyword = document.getElementById("keyword").value.trim();
-    if (!keyword) {
-      alert("Enter a keyword first");
-      return;
-    }
+    const keyword = document.getElementById("keyword").value.trim().toLowerCase();
+    if (!keyword) return alert("Enter a keyword");
 
-    const demand = Math.floor(60 + Math.random() * 40);
-    const competition = Math.floor(20 + Math.random() * 60);
-    const profit = Math.floor(50 + Math.random() * 50);
+    const isOwner = localStorage.getItem("owner") === "true";
+    const plan = localStorage.getItem("plan") || "free";
 
-    document.getElementById("demand").innerHTML =
-      `📈 Demand Score: <strong>${demand}/100</strong>`;
+    const demand = hashScore(keyword, 60, 95);
+    const profit = hashScore(keyword + "profit", 50, 90);
+    const competition = hashScore(keyword + "comp", 20, 80);
 
-    document.getElementById("competition").innerHTML =
-      `⚔️ Competition: <strong>${competition < 40 ? "Low" : competition < 70 ? "Medium" : "High"}</strong>`;
+    let html = `
+      📈 Demand Score: <strong>${demand}/100</strong><br>
+      💰 Profit Potential: <strong>${profit}/100</strong><br>
+    `;
 
-    document.getElementById("profit").innerHTML =
-      `💰 Profit Potential: <strong>${profit}/100</strong>`;
-
-    const ideas = [
-      `${keyword} with premium packaging`,
-      `Rechargeable ${keyword}`,
-      `Compact travel ${keyword}`
-    ];
-
-    const list = document.getElementById("ideas");
-    list.innerHTML = "";
-    ideas.forEach(i => {
-      const li = document.createElement("li");
-      li.textContent = i;
-      list.appendChild(li);
-    });
-
-    const plan = localStorage.getItem("plan");
-    const proContent = document.getElementById("proContent");
-    const upgradeBox = document.getElementById("upgradeBox");
-
-    if (plan === "free") {
-      proContent.classList.add("locked");
-      upgradeBox.style.display = "block";
+    if (plan === "pro" || isOwner) {
+      html += `⚔️ Competition Level: <strong>${competition < 40 ? "Low" : competition < 70 ? "Medium" : "High"}</strong>`;
     } else {
-      proContent.classList.remove("locked");
-      upgradeBox.style.display = "none";
+      html += `<br><strong>🔒 Pro required for full analysis</strong><br>
+               <a href="../pricing.html">Upgrade to Pro</a>`;
     }
 
+    document.getElementById("output").innerHTML = html;
     document.getElementById("results").style.display = "block";
   }
-
-  function unlockPro() {
-    localStorage.setItem("plan", "pro");
-  }
 </script>
-
-<footer style="margin-top:80px; text-align:center; opacity:0.6;">
-  © 2025 DropStacker Pro
-</footer>
 
 </body>
 </html>
