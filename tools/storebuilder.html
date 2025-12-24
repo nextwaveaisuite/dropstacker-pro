@@ -2,40 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Store Builder – DropStacker Pro</title>
+  <title>Product Research – DropStacker Pro</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/styles/main.css" />
   <script src="/scripts/auth.js"></script>
 </head>
 
-<body class="dark" onload="requireAccess()">
+<body class="dark" onload="requireAccess(); lockIfFree('advancedAction')">
 
-  <header class="nav">
-    <a href="/dashboard.html">← Dashboard</a>
-    <button class="logout" onclick="logout()">Logout</button>
-  </header>
+<header class="nav">
+  <span>DropStacker Pro</span>
+  <a href="/dashboard.html">← Dashboard</a>
+</header>
 
-  <main class="tool">
+<main class="tool">
 
-    <h1>🛍️ Store Builder</h1>
-    <p class="tool-intro">
-      Build high-converting dropshipping stores using guided steps.
-    </p>
+  <h1>🔍 Product Research</h1>
+  <p>Find winning products using AI signals.</p>
 
-    <section class="tool-steps">
-      <h2>Store creation process</h2>
-      <ol>
-        <li>Select a validated product</li>
-        <li>Generate store layout & pages</li>
-        <li>Prepare for supplier connection</li>
-      </ol>
-    </section>
+  <button class="primary">Basic Scan (Free)</button>
 
-    <section class="tool-actions">
-      <button class="primary disabled">Build Store (Coming Soon)</button>
-    </section>
+  <div id="advancedAction">
+    <button class="primary">🚀 AI Deep Research (Pro)</button>
+    <p class="locked-label">Pro feature</p>
+  </div>
 
-  </main>
+  <div class="upgrade-note">
+    Upgrade to Pro to unlock AI research, scoring, and trends.
+  </div>
+
+</main>
 
 </body>
 </html>
