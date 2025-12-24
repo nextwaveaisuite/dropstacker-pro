@@ -14,11 +14,21 @@ function logout() {
   window.location.href = "/index.html";
 }
 
-// 🔐 PLAN LOGIC
+// PLAN LOGIC
 function getPlan() {
   return localStorage.getItem("dropstacker_plan") || "free";
 }
 
 function isPro() {
   return getPlan() === "pro";
+}
+
+// FEATURE LOCK
+function lockIfFree(elementId) {
+  if (!isPro()) {
+    const el = document.getElementById(elementId);
+    if (el) {
+      el.classList.add("locked");
+    }
+  }
 }
