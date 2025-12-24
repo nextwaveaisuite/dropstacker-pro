@@ -9,22 +9,48 @@
 <body>
 
 <div style="padding:20px;background:#111;">
-  <a href="../dashboard.html">🏠 Dashboard</a> |
-  <a href="../pricing.html">💲 Pricing</a> |
-  <a href="javascript:history.back()">🔙 Back</a>
+  🏠 <a href="../dashboard.html">Dashboard</a> |
+  💲 <a href="../pricing.html">Pricing</a> |
+  🔙 <a href="javascript:history.back()">Back</a>
 </div>
 
-<div style="max-width:800px;margin:50px auto;background:#111;padding:40px;border-radius:12px;">
+<div style="max-width:820px;margin:50px auto;background:#111;padding:40px;border-radius:12px;">
 
   <h1>🏗 Store Builder</h1>
-  <p><strong>How to use:</strong> Enter your niche and brand name to generate a store blueprint.</p>
 
-  <input id="niche" placeholder="Store niche">
+  <p><strong>What this tool does:</strong><br>
+  Creates a clear blueprint for how your dropshipping store should be structured.</p>
+
+  <p><strong>How to use this tool:</strong></p>
+  <ul>
+    <li>Enter your store niche</li>
+    <li>Enter a brand name (real or placeholder)</li>
+    <li>Click <em>Generate Store</em></li>
+    <li>Use the blueprint when building your store</li>
+  </ul>
+
+  <p><strong>Examples:</strong><br>
+  Niche: Pet Accessories<br>
+  Brand: PawEssentials</p>
+
+  <input id="niche" placeholder="Store niche (e.g. Pet Accessories)">
   <input id="brand" placeholder="Brand name">
   <button onclick="build()">Generate Store</button>
 
   <div id="output" style="margin-top:30px;"></div>
+
+  <p style="margin-top:20px;opacity:0.7;">
+    👉 <strong>Next step:</strong> Once your store structure is clear, use the <em>Supplier Finder</em>.
+  </p>
 </div>
+
+<footer style="margin-top:80px;text-align:center;opacity:0.6;">
+  © 2025 DropStacker Pro · All Rights Reserved<br>
+  <a href="../privacy.html">Privacy</a> |
+  <a href="../terms.html">Terms</a> |
+  <a href="../disclaimer.html">Disclaimer</a> |
+  <a href="../founder.html">Founder</a>
+</footer>
 
 <script>
   function build() {
@@ -42,12 +68,13 @@
 
     document.getElementById("output").innerHTML = `
       <strong>${brand}</strong><br><br>
-      Homepage<br>
+      Homepage Structure:<br>
       - Hero product for ${niche}<br>
-      - Benefits & trust badges<br><br>
-      Pages:<br>
+      - Key benefits<br>
+      - Social proof<br><br>
+      Essential Pages:<br>
       - Shop<br>
-      - About<br>
+      - About Us<br>
       - FAQ<br>
       - Contact
     `;
