@@ -1,1 +1,46 @@
-<!DOCTYPE html><html><head><title>Dashboard</title><link rel='stylesheet' href='styles/main.css'><script src='scripts/auth.js'></script></head><body onload='requireAccess()'><h1>Dashboard</h1><a href='tools/productresearch.html'>Product Research</a><br><button onclick='logout()'>Logout</button></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard – DropStacker Pro</title>
+  <link rel="stylesheet" href="/styles/main.css" />
+  <script src="/scripts/auth.js"></script>
+</head>
+
+<body class="dark" onload="requireAccess()">
+
+  <header class="nav">
+    <div class="logo">DropStacker Pro</div>
+    <nav>
+      <a href="/dashboard.html">Dashboard</a>
+      <a href="/tools/storebuilder.html">Store Builder</a>
+      <a href="/tools/productresearch.html">Product Research</a>
+      <a href="/tools/suppliers.html">Suppliers</a>
+      <button class="logout" onclick="logout()">Logout</button>
+    </nav>
+  </header>
+
+  <main class="dashboard">
+    <h1>📊 Your Dashboard</h1>
+    <p>Choose a tool to begin building your dropshipping business.</p>
+
+    <div class="cards">
+      <a class="card" href="/tools/storebuilder.html">
+        🛍️ Store Builder
+        <span>Create high-converting stores</span>
+      </a>
+
+      <a class="card" href="/tools/productresearch.html">
+        🔍 Product Research
+        <span>Find winning products fast</span>
+      </a>
+
+      <a class="card" href="/tools/suppliers.html">
+        🚚 Supplier Finder
+        <span>Connect with trusted suppliers</span>
+      </a>
+    </div>
+  </main>
+
+</body>
+</html>
