@@ -1,13 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Access Granted</title>
+  <meta charset="UTF-8">
+  <title>Payment Complete</title>
   <link rel="stylesheet" href="/styles/main.css">
+  <script src="/scripts/auth.js"></script>
 </head>
-<body>
-  <main class="center">
-    <h1>✅ Access Granted</h1>
-    <a href="/dashboard.html">Go to Dashboard</a>
-  </main>
+
+<body onload="activatePro(); setTimeout(() => location.href='/dashboard.html', 1500);">
+
+<main class="center">
+  <h1>✅ Payment Successful</h1>
+  <p>Unlocking Pro access...</p>
+</main>
+
 </body>
 </html>
