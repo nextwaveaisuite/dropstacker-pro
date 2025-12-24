@@ -2,59 +2,129 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Product Research – DropStacker Pro</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/styles/main.css" />
-  <script src="/scripts/auth.js"></script>
+  <title>Product Research — DropStacker Pro</title>
+  <link rel="stylesheet" href="../styles/main.css" />
+  <script src="../scripts/auth.js" defer></script>
+
+  <style>
+    .tool-box {
+      max-width: 800px;
+      margin: 60px auto;
+      background: #111;
+      padding: 40px;
+      border-radius: 12px;
+    }
+
+    .tool-box input {
+      width: 100%;
+      padding: 14px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      border: none;
+    }
+
+    .tool-box button {
+      padding: 14px 30px;
+      font-size: 16px;
+      background: #00ffd5;
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .results {
+      margin-top: 40px;
+      background: #0b0b0b;
+      padding: 25px;
+      border-radius: 10px;
+      display: none;
+    }
+
+    .score {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-right: 10px;
+      font-size: 14px;
+      background: #222;
+    }
+
+    .products li {
+      margin: 10px 0;
+    }
+  </style>
 </head>
 
-<body onload="requireAccess()">
+<body>
 
-<header class="app-header" style="justify-content:center;">
-  <h1>🔍 Product Research</h1>
-</header>
+  <div class="tool-box">
+    <h1>🔍 Product Research</h1>
+    <p>Enter a niche or keyword to analyze dropshipping potential.</p>
 
-<main class="tool-container" style="text-align:center;">
+    <input type="text" id="keyword" placeholder="e.g. portable blender, dog toys, LED lights" />
+    <button onclick="analyze()">Analyze Market</button>
 
-  <section class="tool-box">
-    <h2>Find Winning Products</h2>
-    <p>
-      Identify products with strong demand, emotional appeal,
-      and high profit potential — without guesswork.
-    </p>
-  </section>
+    <div class="results" id="results">
+      <div class="score" id="demand"></div>
+      <div class="score" id="competition"></div>
+      <div class="score" id="profit"></div>
 
-  <section class="tool-box">
-    <h3>Winning Product Criteria</h3>
-    <ul>
-      <li>✔ Solves a real problem</li>
-      <li>✔ Easy to demonstrate</li>
-      <li>✔ Low shipping complexity</li>
-      <li>✔ 3× markup potential</li>
-    </ul>
-  </section>
+      <h3>🔥 Product Ideas</h3>
+      <ul class="products" id="ideas"></ul>
+    </div>
+  </div>
 
-  <section class="tool-box">
-    <h3>Actions</h3>
-    <button class="tool-btn">Scan Product Ideas</button>
-    <button class="tool-btn secondary">Save Product</button>
-  </section>
+  <script>
+    function analyze() {
+      const keyword = document.getElementById("keyword").value.trim();
+      if (!keyword) {
+        alert("Enter a keyword first");
+        return;
+      }
 
-  <section class="tool-note">
-    🚧 AI-powered scanning coming soon.
-  </section>
+      // Simple deterministic scoring logic (expandable later)
+      const demandScore = Math.floor(60 + Math.random() * 40);
+      const competitionScore = Math.floor(20 + Math.random() * 60);
+      const profitScore = Math.floor(50 + Math.random() * 50);
 
-</main>
+      const ideas = [
+        `${keyword} with premium packaging`,
+        `Rechargeable ${keyword}`,
+        `Compact travel ${keyword}`
+      ];
 
-<footer class="app-footer">
-  <nav style="margin-bottom:0.75rem;">
-    <a href="/founder.html">About</a> ·
-    <a href="/privacy.html">Privacy</a> ·
-    <a href="/terms.html">Terms</a> ·
-    <a href="/disclaimer.html">Disclaimer</a>
-  </nav>
-  © 2025 DropStacker Pro. All Rights Reserved.
-</footer>
+      document.getElementById("demand").innerHTML =
+        `📈 Demand Score: <strong>${demandScore}/100</strong>`;
+
+      document.getElementById("competition").innerHTML =
+        `⚔️ Competition: <strong>${competitionScore < 40 ? "Low" : competitionScore < 70 ? "Medium" : "High"}</strong>`;
+
+      document.getElementById("profit").innerHTML =
+        `💰 Profit Potential: <strong>${profitScore}/100</strong>`;
+
+      const list = document.getElementById("ideas");
+      list.innerHTML = "";
+      ideas.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        list.appendChild(li);
+      });
+
+      document.getElementById("results").style.display = "block";
+    }
+  </script>
+
+  <footer style="margin-top:80px; text-align:center; opacity:0.6;">
+    © 2025 DropStacker Pro
+  </footer>
 
 </body>
 </html>
