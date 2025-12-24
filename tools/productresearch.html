@@ -8,7 +8,7 @@
 
   <style>
     .tool-box {
-      max-width: 800px;
+      max-width: 820px;
       margin: 60px auto;
       background: #111;
       padding: 40px;
@@ -50,16 +50,30 @@
     }
 
     .upgrade-box {
-      margin-top: 20px;
-      padding: 20px;
+      margin-top: 30px;
+      padding: 25px;
       background: #1b1b1b;
-      border-radius: 10px;
+      border-radius: 12px;
       text-align: center;
       display: none;
     }
 
-    .upgrade-box button {
-      margin-top: 10px;
+    .upgrade-box a {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #000;
+    }
+
+    .stripe {
+      background: #6772e5;
+      color: #fff;
+    }
+
+    .paypal {
       background: gold;
     }
 
@@ -90,15 +104,25 @@
     </div>
 
     <div class="upgrade-box" id="upgradeBox">
-      <h3>🔒 Pro Feature</h3>
-      <p>Unlock full product analysis, profit insights, and winning ideas.</p>
-      <button onclick="upgrade()">Upgrade to Pro</button>
+      <h3>🚀 Unlock DropStacker Pro</h3>
+      <p>Get full market analysis, profit scoring, and winning product ideas.</p>
+
+      <!-- STRIPE HOSTED CHECKOUT -->
+      <a class="stripe" href="https://YOUR-STRIPE-CHECKOUT-LINK" onclick="unlockPro()">
+        Pay with Stripe
+      </a>
+
+      <!-- PAYPAL HOSTED CHECKOUT -->
+      <a class="paypal" href="https://YOUR-PAYPAL-CHECKOUT-LINK" onclick="unlockPro()">
+        Pay with PayPal
+      </a>
+
+      <p style="margin-top:10px; opacity:0.6;">Instant access after payment</p>
     </div>
   </div>
 </div>
 
 <script>
-  // Ensure plan exists
   if (!localStorage.getItem("plan")) {
     localStorage.setItem("plan", "free");
   }
@@ -152,8 +176,8 @@
     document.getElementById("results").style.display = "block";
   }
 
-  function upgrade() {
-    alert("Upgrade coming next — payments wiring in Step 3.");
+  function unlockPro() {
+    localStorage.setItem("plan", "pro");
   }
 </script>
 
