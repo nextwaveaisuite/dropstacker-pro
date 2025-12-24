@@ -1,34 +1,33 @@
+// DropStacker Pro – Local Auth Engine
+
 function isLoggedIn() {
   return localStorage.getItem("dropstacker_access") === "true";
 }
 
-function requireAccess() {
+function isPro() {
+  return localStorage.getItem("dropstacker_plan") === "pro";
+}
+
+function requireLogin() {
   if (!isLoggedIn()) {
     window.location.href = "/index.html";
   }
 }
 
-function logout() {
+function loginUser() {
+  localStorage.setItem("dropstacker_access", "true");
+  localStorage.setItem("dropstacker_plan", "free");
+  window.location.href = "/dashboard.html";
+}
+
+function logoutUser() {
   localStorage.removeItem("dropstacker_access");
   localStorage.removeItem("dropstacker_plan");
   window.location.href = "/index.html";
 }
 
-// PLAN LOGIC
-function getPlan() {
-  return localStorage.getItem("dropstacker_plan") || "free";
-}
-
-function isPro() {
-  return getPlan() === "pro";
-}
-
-// FEATURE LOCK
-function lockIfFree(elementId) {
-  if (!isPro()) {
-    const el = document.getElementById(elementId);
-    if (el) {
-      el.classList.add("locked");
-    }
-  }
+function upgradeToPro() {
+  localStorage.setItem("dropstacker_plan", "pro");
+  alert("✅ Pro features unlocked");
+  window.location.href = "/dashboard.html";
 }
