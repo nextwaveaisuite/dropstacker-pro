@@ -1,7 +1,56 @@
-<script src="/scripts/auth.js"></script>
-<script>
-  if (!isPro()) {
-    alert("Upgrade to Pro to access this tool.");
-    window.location.href = "/dashboard.html";
-  }
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Product Research – DropStacker Pro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/styles/main.css" />
+  <script src="/scripts/auth.js"></script>
+</head>
+
+<body onload="requireAccess()">
+
+<header class="app-header">
+  <h1>🔍 Product Research</h1>
+  <a href="/dashboard.html" class="back-link">← Back to Dashboard</a>
+</header>
+
+<main class="tool-container">
+
+  <section class="tool-box">
+    <h2>Find Winning Products</h2>
+    <p>
+      Use this tool to identify products with strong demand,
+      healthy margins, and low competition.
+    </p>
+  </section>
+
+  <section class="tool-box">
+    <h3>Recommended Criteria</h3>
+    <ul>
+      <li>✔ Solves a clear problem</li>
+      <li>✔ Lightweight & easy to ship</li>
+      <li>✔ Emotional or impulse-driven</li>
+      <li>✔ Retail price 3× cost</li>
+    </ul>
+  </section>
+
+  <section class="tool-box">
+    <h3>Next Actions</h3>
+    <button class="tool-btn">Scan Trending Products</button>
+    <button class="tool-btn secondary">Save Product Idea</button>
+  </section>
+
+  <section class="tool-note">
+    🚧 AI scanning coming soon.  
+    This version prepares your workflow and decisions.
+  </section>
+
+</main>
+
+<footer class="app-footer">
+  © 2025 DropStacker Pro
+</footer>
+
+</body>
+</html>
