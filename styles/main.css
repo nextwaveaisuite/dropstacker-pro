@@ -1,1 +1,120 @@
-body{background:#0f0f0f;color:#fff;font-family:sans-serif;}
+body.dark {
+  background: #0b0b0b;
+  color: #ffffff;
+  font-family: Inter, system-ui, sans-serif;
+  margin: 0;
+}
+
+/* NAV */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 2rem;
+  background: #0f0f0f;
+  border-bottom: 1px solid #1f1f1f;
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: #f5c518;
+}
+
+.nav-links a {
+  margin-right: 1.25rem;
+  color: #ccc;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+  color: #f5c518;
+}
+
+.logout {
+  background: transparent;
+  border: 1px solid #f5c518;
+  color: #f5c518;
+  padding: 0.45rem 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* DASHBOARD */
+.dashboard {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.welcome h1 {
+  font-size: 2.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.welcome p {
+  color: #bdbdbd;
+  max-width: 720px;
+}
+
+/* TOOL GRID */
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.tool-card {
+  background: #151515;
+  border-radius: 12px;
+  padding: 2rem;
+  text-decoration: none;
+  color: #ffffff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid #1f1f1f;
+}
+
+.tool-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+}
+
+.tool-card .icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.tool-card h3 {
+  margin: 0.5rem 0;
+  color: #f5c518;
+}
+
+.tool-card p {
+  font-size: 0.95rem;
+  color: #cfcfcf;
+}
+
+.tool-card .cta {
+  display: inline-block;
+  margin-top: 1.25rem;
+  font-size: 0.85rem;
+  color: #f5c518;
+}
+
+/* NEXT STEPS */
+.next-steps {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid #1f1f1f;
+}
+
+.next-steps h2 {
+  margin-bottom: 1rem;
+}
+
+.next-steps ol {
+  color: #cfcfcf;
+}
