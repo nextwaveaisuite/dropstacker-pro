@@ -1,4 +1,4 @@
-// DropStacker Pro – Local Auth Engine
+// DropStacker Pro – Local Auth + Payment Engine
 
 function isLoggedIn() {
   return localStorage.getItem("dropstacker_access") === "true";
@@ -26,8 +26,13 @@ function logoutUser() {
   window.location.href = "/index.html";
 }
 
+// 🔥 PAYPAL FLOW (NO BACKEND)
 function upgradeToPro() {
+  window.location.href = "https://www.paypal.com/paypalme/YOURPAYPAL/29";
+}
+
+// ✅ CALLED AFTER PAYMENT
+function activatePro() {
   localStorage.setItem("dropstacker_plan", "pro");
-  alert("✅ Pro features unlocked");
-  window.location.href = "/dashboard.html";
+  localStorage.setItem("dropstacker_access", "true");
 }
