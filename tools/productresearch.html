@@ -1,37 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Product Research – DropStacker Pro</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/styles/main.css" />
+  <meta charset="UTF-8">
+  <title>Product Research</title>
+  <link rel="stylesheet" href="/styles/main.css">
   <script src="/scripts/auth.js"></script>
 </head>
 
-<body class="dark" onload="requireAccess(); lockIfFree('advancedAction')">
-
-<header class="nav">
-  <span>DropStacker Pro</span>
-  <a href="/dashboard.html">← Dashboard</a>
-</header>
+<body onload="requireLogin()">
 
 <main class="tool">
 
   <h1>🔍 Product Research</h1>
-  <p>Find winning products using AI signals.</p>
 
-  <button class="primary">Basic Scan (Free)</button>
-
-  <div id="advancedAction">
-    <button class="primary">🚀 AI Deep Research (Pro)</button>
-    <p class="locked-label">Pro feature</p>
-  </div>
-
-  <div class="upgrade-note">
-    Upgrade to Pro to unlock AI research, scoring, and trends.
+  <div id="locked">
+    <p>Upgrade to Pro to unlock deep research.</p>
+    <button onclick="upgradeToPro()">Unlock Pro</button>
   </div>
 
 </main>
+
+<script>
+  if (isPro()) {
+    document.getElementById("locked").innerHTML =
+      "<p>✅ Pro research tools active.</p>";
+  }
+</script>
 
 </body>
 </html>
