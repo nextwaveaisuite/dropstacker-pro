@@ -21,11 +21,23 @@
       margin-bottom: 40px;
     }
 
-    .nav a {
-      margin-right: 15px;
-      text-decoration: none;
-      color: #00ffd5;
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .plan-badge {
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
       font-weight: bold;
+      background: #333;
+    }
+
+    .plan-pro {
+      background: gold;
+      color: #000;
     }
 
     .tools {
@@ -41,10 +53,6 @@
       border-radius: 12px;
     }
 
-    .tool-card h3 {
-      margin-top: 0;
-    }
-
     .tool-card a {
       display: inline-block;
       margin-top: 15px;
@@ -56,7 +64,6 @@
       text-decoration: none;
     }
 
-    /* UPGRADE CTA */
     .upgrade-cta {
       margin-top: 60px;
       padding: 35px;
@@ -81,58 +88,64 @@
 
 <body>
 
-  <div class="dashboard">
+<div class="dashboard">
 
-    <!-- TOP NAV -->
-    <div class="nav">
-      <h1>📦 DropStacker Pro</h1>
-      <div>
-        <a href="dashboard.html">Dashboard</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="#" onclick="logout()">Logout</a>
-      </div>
+  <!-- TOP NAV -->
+  <div class="nav">
+    <h1>📦 DropStacker Pro</h1>
+
+    <div class="nav-right">
+      <span id="planBadge" class="plan-badge">Plan: Free</span>
+      <a href="pricing.html">Pricing</a>
+      <a href="#" onclick="logout()">Logout</a>
     </div>
-
-    <!-- INTRO -->
-    <p>Welcome to your DropStacker Pro dashboard. Start by choosing a tool below.</p>
-
-    <!-- TOOLS -->
-    <div class="tools">
-
-      <div class="tool-card">
-        <h3>🔍 Product Research</h3>
-        <p>Find high-demand, profitable products to sell.</p>
-        <a href="tools/productresearch.html">Open Tool</a>
-      </div>
-
-      <div class="tool-card">
-        <h3>🏗 Store Builder</h3>
-        <p>Plan and structure your dropshipping store.</p>
-        <a href="tools/storebuilder.html">Open Tool</a>
-      </div>
-
-      <div class="tool-card">
-        <h3>🚚 Supplier Finder</h3>
-        <p>Discover reliable suppliers and fulfilment options.</p>
-        <a href="tools/suppliers.html">Open Tool</a>
-      </div>
-
-    </div>
-
-    <!-- UPGRADE CTA (ADDED & WIRED) -->
-    <div class="upgrade-cta">
-      <h2>🚀 Ready to Go Pro?</h2>
-      <p>
-        Unlock full product research, profit insights, and all premium tools.
-      </p>
-      <a href="pricing.html">View Pricing</a>
-    </div>
-
   </div>
 
-  <footer style="margin-top:80px; text-align:center; opacity:0.6;">
-    © 2025 DropStacker Pro
-  </footer>
+  <p>Welcome to your DropStacker Pro dashboard. Choose a tool below.</p>
+
+  <!-- TOOLS -->
+  <div class="tools">
+    <div class="tool-card">
+      <h3>🔍 Product Research</h3>
+      <p>Find high-demand profitable products.</p>
+      <a href="tools/productresearch.html">Open Tool</a>
+    </div>
+
+    <div class="tool-card">
+      <h3>🏗 Store Builder</h3>
+      <p>Plan and structure your dropshipping store.</p>
+      <a href="tools/storebuilder.html">Open Tool</a>
+    </div>
+
+    <div class="tool-card">
+      <h3>🚚 Supplier Finder</h3>
+      <p>Find reliable suppliers fast.</p>
+      <a href="tools/suppliers.html">Open Tool</a>
+    </div>
+  </div>
+
+  <!-- UPGRADE CTA -->
+  <div class="upgrade-cta">
+    <h2>🚀 Ready to Go Pro?</h2>
+    <p>Unlock full tools, insights, and premium features.</p>
+    <a href="pricing.html">View Pricing</a>
+  </div>
+
+</div>
+
+<script>
+  const plan = localStorage.getItem("plan") || "free";
+  const badge = document.getElementById("planBadge");
+
+  if (plan === "pro") {
+    badge.textContent = "Plan: Pro";
+    badge.classList.add("plan-pro");
+  }
+</script>
+
+<footer style="margin-top:80px; text-align:center; opacity:0.6;">
+  © 2025 DropStacker Pro
+</footer>
 
 </body>
 </html>
