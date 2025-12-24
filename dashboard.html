@@ -1,47 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Dashboard – DropStacker Pro</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/styles/main.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/styles/main.css" />
   <script src="/scripts/auth.js"></script>
 </head>
 
-<body onload="requireLogin()">
+<body onload="requireAccess()">
 
-<header class="nav">
-  <span>DropStacker Pro</span>
-  <button onclick="logoutUser()">Logout</button>
+<header class="app-header" style="justify-content:center;">
+  <h1>🚀 DropStacker Pro</h1>
 </header>
 
-<main class="dashboard">
+<main class="dashboard-container" style="text-align:center;">
 
-  <h1 style="color:#f5c518;">Your Dashboard</h1>
+  <section class="tool-box">
+    <h2>Welcome to Your Dashboard</h2>
+    <p>
+      This is your command center for building a profitable
+      dropshipping business — step by step.
+    </p>
+  </section>
 
-  <div class="card">
-    <h2>Product Research</h2>
-    <p>Find winning products.</p>
-    <a href="/tools/productresearch.html">Open</a>
-  </div>
+  <section class="dashboard-grid">
 
-  <div class="card">
-    <h2>Store Builder</h2>
-    <p>Build your store fast.</p>
-    <a href="/tools/storebuilder.html">Open</a>
-  </div>
+    <div class="dashboard-card">
+      <h3>🔍 Product Research</h3>
+      <p>Find high-margin winning products with confidence.</p>
+      <a href="/tools/productresearch.html" class="primary-btn">Open Tool</a>
+    </div>
 
-  <div class="card">
-    <h2>Supplier Finder</h2>
-    <p>Connect with suppliers.</p>
-    <a href="/tools/suppliers.html">Open</a>
-  </div>
+    <div class="dashboard-card">
+      <h3>🏗️ Store Builder</h3>
+      <p>Structure a high-converting store without tech skills.</p>
+      <a href="/tools/storebuilder.html" class="primary-btn">Open Tool</a>
+    </div>
 
-  <div class="upgrade-box">
-    <button class="primary" onclick="upgradeToPro()">Upgrade to Pro</button>
+    <div class="dashboard-card">
+      <h3>🌍 Supplier Finder</h3>
+      <p>Connect with reliable global suppliers you can trust.</p>
+      <a href="/tools/suppliers.html" class="primary-btn">Open Tool</a>
+    </div>
+
+  </section>
+
+  <section class="tool-note" style="margin-top:2rem;">
+    🔒 Access granted. Your progress is saved automatically.
+  </section>
+
+  <div style="margin-top:2.5rem;">
+    <button class="tool-btn secondary" onclick="logoutUser()">Log Out</button>
   </div>
 
 </main>
+
+<footer class="app-footer">
+  © 2025 DropStacker Pro. All Rights Reserved.
+</footer>
 
 </body>
 </html>
