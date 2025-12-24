@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Upgrade to Pro – DropStacker Pro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/styles/main.css" />
+  <script src="/scripts/auth.js"></script>
+</head>
+
+<body class="dark">
+
+<header class="nav">
+  <span>DropStacker Pro</span>
+  <a href="/dashboard.html">← Back</a>
+</header>
+
+<main class="upgrade">
+
+  <h1>🚀 Upgrade to Pro</h1>
+  <p>Unlock all advanced tools and automation.</p>
+
+  <ul style="margin:2rem 0; line-height:1.8;">
+    <li>✅ AI Deep Product Research</li>
+    <li>✅ Store Builder Automation</li>
+    <li>✅ Supplier Intelligence</li>
+    <li>✅ Priority Tools Access</li>
+  </ul>
+
+  <button class="primary" onclick="upgradeToPro()">Unlock Pro Access</button>
+
+  <p style="margin-top:1rem; font-size:0.85rem; opacity:0.7;">
+    No payment required for demo mode
+  </p>
+
+</main>
+
+<script>
+  function upgradeToPro() {
+    localStorage.setItem("dropstacker_plan", "pro");
+    alert("✅ Pro access unlocked!");
+    window.location.href = "/dashboard.html";
+  }
+</script>
+
+</body>
+</html>
