@@ -1,31 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Product Research</title>
-  <link rel="stylesheet" href="/styles/main.css">
-  <script src="/scripts/auth.js"></script>
-</head>
-
-<body onload="requireLogin()">
-
-<main class="tool">
-
-  <h1>🔍 Product Research</h1>
-
-  <div id="locked">
-    <p>Upgrade to Pro to unlock deep research.</p>
-    <button onclick="upgradeToPro()">Unlock Pro</button>
-  </div>
-
-</main>
-
+<script src="/scripts/auth.js"></script>
 <script>
-  if (isPro()) {
-    document.getElementById("locked").innerHTML =
-      "<p>✅ Pro research tools active.</p>";
+  if (!isPro()) {
+    alert("Upgrade to Pro to access this tool.");
+    window.location.href = "/dashboard.html";
   }
 </script>
-
-</body>
-</html>
