@@ -11,61 +11,47 @@
 <body class="dark" onload="requireAccess()">
 
   <header class="nav">
-    <div class="logo">DropStacker Pro</div>
-    <nav class="nav-links">
-      <a href="/dashboard.html" class="active">Dashboard</a>
-      <a href="/tools/storebuilder.html">Store Builder</a>
-      <a href="/tools/productresearch.html">Product Research</a>
-      <a href="/tools/suppliers.html">Suppliers</a>
-      <button class="logout" onclick="logout()">Logout</button>
-    </nav>
+    <span>DropStacker Pro</span>
+    <button class="logout" onclick="logout()">Logout</button>
   </header>
 
   <main class="dashboard">
 
-    <section class="welcome">
-      <h1>Welcome to Your Dashboard</h1>
-      <p>
-        This is your command center. Choose a tool below to start
-        building your dropshipping business faster and smarter.
-      </p>
-    </section>
+    <h1>Your Dashboard</h1>
+    <p class="plan">
+      Plan: <strong id="planLabel">Free</strong>
+    </p>
 
-    <section class="tool-grid">
+    <div class="cards">
 
-      <a class="tool-card" href="/tools/storebuilder.html">
-        <div class="icon">🛍️</div>
-        <h3>Store Builder</h3>
-        <p>Create high-converting stores with guided AI workflows.</p>
-        <span class="cta">Open Tool →</span>
+      <a href="/tools/productresearch.html" class="card">
+        <h3>🔍 Product Research</h3>
+        <p>Find winning products fast</p>
       </a>
 
-      <a class="tool-card" href="/tools/productresearch.html">
-        <div class="icon">🔍</div>
-        <h3>Product Research</h3>
-        <p>Discover profitable products without guesswork.</p>
-        <span class="cta">Open Tool →</span>
+      <a href="/tools/storebuilder.html" class="card">
+        <h3>🛍️ Store Builder</h3>
+        <p>Create high-converting stores</p>
       </a>
 
-      <a class="tool-card" href="/tools/suppliers.html">
-        <div class="icon">🚚</div>
-        <h3>Supplier Finder</h3>
-        <p>Connect with reliable suppliers worldwide.</p>
-        <span class="cta">Open Tool →</span>
+      <a href="/tools/suppliers.html" class="card">
+        <h3>🚚 Supplier Finder</h3>
+        <p>Connect with trusted suppliers</p>
       </a>
 
-    </section>
+    </div>
 
-    <section class="next-steps">
-      <h2>What should you do first?</h2>
-      <ol>
-        <li>Start with <strong>Product Research</strong> to validate demand.</li>
-        <li>Use <strong>Store Builder</strong> to create your storefront.</li>
-        <li>Connect suppliers and launch.</li>
-      </ol>
+    <section class="upgrade">
+      <h2>🚀 Upgrade to Pro</h2>
+      <p>Unlock advanced tools, automation, and scaling features.</p>
+      <button class="primary disabled">Upgrade (Coming Soon)</button>
     </section>
 
   </main>
+
+  <script>
+    document.getElementById("planLabel").innerText = getPlan().toUpperCase();
+  </script>
 
 </body>
 </html>
