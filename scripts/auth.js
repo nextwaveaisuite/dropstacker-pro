@@ -1,18 +1,24 @@
-<script>
-  function grantAccess() {
-    localStorage.setItem("dropstacker_access", "true");
-    window.location.href = "/dashboard.html";
-  }
+function isLoggedIn() {
+  return localStorage.getItem("dropstacker_access") === "true";
+}
 
-  function requireAccess() {
-    const access = localStorage.getItem("dropstacker_access");
-    if (!access) {
-      window.location.href = "/";
-    }
+function requireAccess() {
+  if (!isLoggedIn()) {
+    window.location.href = "/index.html";
   }
+}
 
-  function logout() {
-    localStorage.removeItem("dropstacker_access");
-    window.location.href = "/";
-  }
-</script>
+function logout() {
+  localStorage.removeItem("dropstacker_access");
+  localStorage.removeItem("dropstacker_plan");
+  window.location.href = "/index.html";
+}
+
+// 🔐 PLAN LOGIC
+function getPlan() {
+  return localStorage.getItem("dropstacker_plan") || "free";
+}
+
+function isPro() {
+  return getPlan() === "pro";
+}
