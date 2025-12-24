@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Dashboard – DropStacker Pro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/styles/main.css" />
   <script src="/scripts/auth.js"></script>
 </head>
@@ -11,8 +12,8 @@
 
   <header class="nav">
     <div class="logo">DropStacker Pro</div>
-    <nav>
-      <a href="/dashboard.html">Dashboard</a>
+    <nav class="nav-links">
+      <a href="/dashboard.html" class="active">Dashboard</a>
       <a href="/tools/storebuilder.html">Store Builder</a>
       <a href="/tools/productresearch.html">Product Research</a>
       <a href="/tools/suppliers.html">Suppliers</a>
@@ -21,25 +22,49 @@
   </header>
 
   <main class="dashboard">
-    <h1>📊 Your Dashboard</h1>
-    <p>Choose a tool to begin building your dropshipping business.</p>
 
-    <div class="cards">
-      <a class="card" href="/tools/storebuilder.html">
-        🛍️ Store Builder
-        <span>Create high-converting stores</span>
+    <section class="welcome">
+      <h1>Welcome to Your Dashboard</h1>
+      <p>
+        This is your command center. Choose a tool below to start
+        building your dropshipping business faster and smarter.
+      </p>
+    </section>
+
+    <section class="tool-grid">
+
+      <a class="tool-card" href="/tools/storebuilder.html">
+        <div class="icon">🛍️</div>
+        <h3>Store Builder</h3>
+        <p>Create high-converting stores with guided AI workflows.</p>
+        <span class="cta">Open Tool →</span>
       </a>
 
-      <a class="card" href="/tools/productresearch.html">
-        🔍 Product Research
-        <span>Find winning products fast</span>
+      <a class="tool-card" href="/tools/productresearch.html">
+        <div class="icon">🔍</div>
+        <h3>Product Research</h3>
+        <p>Discover profitable products without guesswork.</p>
+        <span class="cta">Open Tool →</span>
       </a>
 
-      <a class="card" href="/tools/suppliers.html">
-        🚚 Supplier Finder
-        <span>Connect with trusted suppliers</span>
+      <a class="tool-card" href="/tools/suppliers.html">
+        <div class="icon">🚚</div>
+        <h3>Supplier Finder</h3>
+        <p>Connect with reliable suppliers worldwide.</p>
+        <span class="cta">Open Tool →</span>
       </a>
-    </div>
+
+    </section>
+
+    <section class="next-steps">
+      <h2>What should you do first?</h2>
+      <ol>
+        <li>Start with <strong>Product Research</strong> to validate demand.</li>
+        <li>Use <strong>Store Builder</strong> to create your storefront.</li>
+        <li>Connect suppliers and launch.</li>
+      </ol>
+    </section>
+
   </main>
 
 </body>
