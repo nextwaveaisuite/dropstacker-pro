@@ -2,36 +2,55 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Product Research – DropStacker Pro</title>
+  <title>Store Builder – DropStacker Pro</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/styles/main.css" />
   <script src="/scripts/auth.js"></script>
 </head>
 
-<body class="dark" onload="requireAccess(); lockIfFree('advancedAction')">
+<body onload="requireAccess()">
 
-<header class="nav">
-  <span>DropStacker Pro</span>
-  <a href="/dashboard.html">← Dashboard</a>
+<header class="app-header">
+  <h1>🏗️ Store Builder</h1>
+  <a href="/dashboard.html" class="back-link">← Back to Dashboard</a>
 </header>
 
-<main class="tool">
+<main class="tool-container">
 
-  <h1>🔍 Product Research</h1>
-  <p>Find winning products using AI signals.</p>
+  <section class="tool-box">
+    <h2>Create Your Dropshipping Store</h2>
+    <p>
+      Use this builder to structure a high-converting dropshipping store
+      without needing technical skills or design experience.
+    </p>
+  </section>
 
-  <button class="primary">Basic Scan (Free)</button>
+  <section class="tool-box">
+    <h3>Store Setup Checklist</h3>
+    <ul>
+      <li>✔ Choose a niche-focused product</li>
+      <li>✔ Define your brand positioning</li>
+      <li>✔ Create trust-building pages</li>
+      <li>✔ Optimize for conversions</li>
+    </ul>
+  </section>
 
-  <div id="advancedAction">
-    <button class="primary">🚀 AI Deep Research (Pro)</button>
-    <p class="locked-label">Pro feature</p>
-  </div>
+  <section class="tool-box">
+    <h3>Builder Actions</h3>
+    <button class="tool-btn">Generate Store Layout</button>
+    <button class="tool-btn secondary">Preview Store Structure</button>
+  </section>
 
-  <div class="upgrade-note">
-    Upgrade to Pro to unlock AI research, scoring, and trends.
-  </div>
+  <section class="tool-note">
+    🚧 Automated AI store generation is coming soon.  
+    This version helps you plan and structure your store correctly.
+  </section>
 
 </main>
+
+<footer class="app-footer">
+  © 2025 DropStacker Pro
+</footer>
 
 </body>
 </html>
