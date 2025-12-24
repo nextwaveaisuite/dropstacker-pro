@@ -18,6 +18,7 @@
       max-width: 900px;
       margin: 60px auto;
       padding: 20px;
+      background: none !important;
     }
 
     h1 {
@@ -49,17 +50,26 @@
       border-radius: 12px;
     }
 
-    /* CTA — NO BACKGROUND, NO BOX */
+    /* 🔥 HARD OVERRIDE — REMOVE CTA BACKGROUND COMPLETELY */
     .cta {
       margin-top: 70px;
       text-align: center;
+      background: none !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+    }
+
+    .cta * {
+      background: none !important;
+      box-shadow: none !important;
     }
 
     .cta a {
       display: inline-block;
       margin-top: 20px;
       padding: 16px 36px;
-      background: gold;
+      background: gold !important;
       color: #000;
       font-weight: bold;
       text-decoration: none;
@@ -77,6 +87,7 @@
       margin-top: 90px;
       text-align: center;
       opacity: 0.5;
+      background: none !important;
     }
   </style>
 </head>
@@ -100,40 +111,31 @@
   <div class="steps">
     <div class="step">
       <h3>🔍 Product Research</h3>
-      <p>
-        Analyze demand, competition, and profit potential for product ideas.
-        Discover what to sell before you build anything.
-      </p>
+      <p>Analyze demand, competition, and profit potential.</p>
     </div>
 
     <div class="step">
       <h3>🏗 Store Builder</h3>
-      <p>
-        Generate a clear store blueprint including homepage structure,
-        essential pages, and conversion layout.
-      </p>
+      <p>Generate a clear, high-converting store blueprint.</p>
     </div>
 
     <div class="step">
       <h3>🚚 Supplier Finder</h3>
-      <p>
-        Learn the best supplier strategy for your product —
-        from testing to scaling to branding.
-      </p>
+      <p>Choose the best supplier strategy for your product.</p>
     </div>
   </div>
 
   <h2>🧭 How To Use DropStacker Pro</h2>
   <p>Start with Product Research to validate an idea.</p>
-  <p>Move to Store Builder to plan your store structure.</p>
-  <p>Use Supplier Finder to choose the right fulfilment path.</p>
-  <p>Upgrade to Pro when you’re ready to unlock full insights.</p>
+  <p>Move to Store Builder to plan your store.</p>
+  <p>Use Supplier Finder to choose fulfilment.</p>
+  <p>Upgrade to Pro when you’re ready.</p>
 
   <h2>🔓 Free vs Pro Access</h2>
   <p><strong>Free:</strong> Tool previews and limited insights.</p>
-  <p><strong>Pro:</strong> Full analysis, profit scoring, and complete blueprints.</p>
+  <p><strong>Pro:</strong> Full analysis, profit scoring, and blueprints.</p>
 
-  <!-- CLEAN CTA (NO BOX) -->
+  <!-- ✅ CLEAN CTA — NO BOX, NO BACKGROUND -->
   <div class="cta">
     <h2>Start Using DropStacker Pro</h2>
     <p>
