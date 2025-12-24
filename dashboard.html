@@ -1,57 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Dashboard – DropStacker Pro</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/styles/main.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/main.css">
   <script src="/scripts/auth.js"></script>
 </head>
 
-<body class="dark" onload="requireAccess()">
+<body onload="requireLogin()">
 
-  <header class="nav">
-    <span>DropStacker Pro</span>
-    <button class="logout" onclick="logout()">Logout</button>
-  </header>
+<header class="nav">
+  <span>DropStacker Pro</span>
+  <button onclick="logoutUser()">Logout</button>
+</header>
 
-  <main class="dashboard">
+<main class="dashboard">
 
-    <h1>Your Dashboard</h1>
-    <p class="plan">
-      Plan: <strong id="planLabel">Free</strong>
-    </p>
+  <h1 style="color:#f5c518;">Your Dashboard</h1>
 
-    <div class="cards">
+  <div class="card">
+    <h2>Product Research</h2>
+    <p>Find winning products.</p>
+    <a href="/tools/productresearch.html">Open</a>
+  </div>
 
-      <a href="/tools/productresearch.html" class="card">
-        <h3>🔍 Product Research</h3>
-        <p>Find winning products fast</p>
-      </a>
+  <div class="card">
+    <h2>Store Builder</h2>
+    <p>Build your store fast.</p>
+    <a href="/tools/storebuilder.html">Open</a>
+  </div>
 
-      <a href="/tools/storebuilder.html" class="card">
-        <h3>🛍️ Store Builder</h3>
-        <p>Create high-converting stores</p>
-      </a>
+  <div class="card">
+    <h2>Supplier Finder</h2>
+    <p>Connect with suppliers.</p>
+    <a href="/tools/suppliers.html">Open</a>
+  </div>
 
-      <a href="/tools/suppliers.html" class="card">
-        <h3>🚚 Supplier Finder</h3>
-        <p>Connect with trusted suppliers</p>
-      </a>
+  <div class="upgrade-box">
+    <button class="primary" onclick="upgradeToPro()">Upgrade to Pro</button>
+  </div>
 
-    </div>
-
-    <section class="upgrade">
-      <h2>🚀 Upgrade to Pro</h2>
-      <p>Unlock advanced tools, automation, and scaling features.</p>
-      <button class="primary disabled">Upgrade (Coming Soon)</button>
-    </section>
-
-  </main>
-
-  <script>
-    document.getElementById("planLabel").innerText = getPlan().toUpperCase();
-  </script>
+</main>
 
 </body>
 </html>
