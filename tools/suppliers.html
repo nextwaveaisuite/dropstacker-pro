@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Suppliers</title>
+  <title>Supplier Finder – DropStacker Pro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/styles/main.css" />
   <script src="/scripts/auth.js"></script>
 </head>
@@ -10,14 +11,30 @@
 <body class="dark" onload="requireAccess()">
 
   <header class="nav">
-    <a href="/dashboard.html">← Back</a>
+    <a href="/dashboard.html">← Dashboard</a>
     <button class="logout" onclick="logout()">Logout</button>
   </header>
 
   <main class="tool">
+
     <h1>🚚 Supplier Finder</h1>
-    <p>Connect with reliable global suppliers.</p>
-    <div class="placeholder">Supplier matching engine coming next.</div>
+    <p class="tool-intro">
+      Connect with reliable suppliers to fulfill your orders efficiently.
+    </p>
+
+    <section class="tool-steps">
+      <h2>Supplier workflow</h2>
+      <ol>
+        <li>Choose a product</li>
+        <li>Review vetted supplier options</li>
+        <li>Prepare fulfillment setup</li>
+      </ol>
+    </section>
+
+    <section class="tool-actions">
+      <button class="primary disabled">Find Suppliers (Coming Soon)</button>
+    </section>
+
   </main>
 
 </body>
