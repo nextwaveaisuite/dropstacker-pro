@@ -8,52 +8,46 @@
 
 <body>
 
-<div style="max-width:800px;margin:60px auto;background:#111;padding:40px;border-radius:12px;">
+<div style="padding:20px;background:#111;">
+  <a href="../dashboard.html">🏠 Dashboard</a> |
+  <a href="../pricing.html">💲 Pricing</a> |
+  <a href="javascript:history.back()">🔙 Back</a>
+</div>
+
+<div style="max-width:800px;margin:50px auto;background:#111;padding:40px;border-radius:12px;">
 
   <h1>🏗 Store Builder</h1>
-  <p>Create a high-converting dropshipping store blueprint.</p>
+  <p><strong>How to use:</strong> Enter your niche and brand name to generate a store blueprint.</p>
 
-  <input id="niche" placeholder="Store niche (e.g. Pet Accessories)">
+  <input id="niche" placeholder="Store niche">
   <input id="brand" placeholder="Brand name">
+  <button onclick="build()">Generate Store</button>
 
-  <button onclick="buildStore()">Generate Store</button>
-
-  <div id="output" style="margin-top:30px;display:none;">
-    <div id="proContent">
-      <h3>Store Blueprint</h3>
-      <p id="structure"></p>
-    </div>
-
-    <div id="upgrade" style="display:none;margin-top:20px;">
-      <strong>🔒 Pro required</strong><br>
-      <a href="../pricing.html">Upgrade to Pro</a>
-    </div>
-  </div>
+  <div id="output" style="margin-top:30px;"></div>
 </div>
 
 <script>
-  function buildStore() {
+  function build() {
+    const isOwner = localStorage.getItem("owner") === "true";
     const plan = localStorage.getItem("plan") || "free";
-    document.getElementById("output").style.display = "block";
 
-    if (plan === "free") {
-      document.getElementById("proContent").style.filter = "blur(6px)";
-      document.getElementById("upgrade").style.display = "block";
+    if (!(isOwner || plan === "pro")) {
+      document.getElementById("output").innerHTML =
+        "🔒 Pro required<br><a href='../pricing.html'>Upgrade to Pro</a>";
       return;
     }
 
-    const niche = document.getElementById("niche").value;
-    const brand = document.getElementById("brand").value;
+    const niche = niche.value;
+    const brand = brand.value;
 
-    document.getElementById("structure").innerHTML = `
+    document.getElementById("output").innerHTML = `
       <strong>${brand}</strong><br><br>
-      Home Page<br>
+      Homepage<br>
       - Hero product for ${niche}<br>
-      - Social proof<br>
-      - Benefits section<br><br>
+      - Benefits & trust badges<br><br>
       Pages:<br>
       - Shop<br>
-      - About Us<br>
+      - About<br>
       - FAQ<br>
       - Contact
     `;
