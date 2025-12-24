@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Product Research</title>
+  <title>Product Research – DropStacker Pro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/styles/main.css" />
   <script src="/scripts/auth.js"></script>
 </head>
@@ -10,14 +11,30 @@
 <body class="dark" onload="requireAccess()">
 
   <header class="nav">
-    <a href="/dashboard.html">← Back</a>
+    <a href="/dashboard.html">← Dashboard</a>
     <button class="logout" onclick="logout()">Logout</button>
   </header>
 
   <main class="tool">
+
     <h1>🔍 Product Research</h1>
-    <p>Discover profitable products using AI-assisted insights.</p>
-    <div class="placeholder">Keyword & product scanning coming next.</div>
+    <p class="tool-intro">
+      Find profitable products by analyzing demand, trends, and competition.
+    </p>
+
+    <section class="tool-steps">
+      <h2>How this tool works</h2>
+      <ol>
+        <li>Search a product idea or niche</li>
+        <li>Review demand & trend indicators</li>
+        <li>Validate before building a store</li>
+      </ol>
+    </section>
+
+    <section class="tool-actions">
+      <button class="primary disabled">Search Products (Coming Soon)</button>
+    </section>
+
   </main>
 
 </body>
