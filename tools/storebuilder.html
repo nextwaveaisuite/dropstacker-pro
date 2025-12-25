@@ -7,43 +7,81 @@
 
   <style>
     body { line-height: 1.9; }
+
     h1 { text-align: center; margin-bottom: 35px; }
 
-    .top-nav { text-align:center;padding:20px;background:#111; }
+    .top-nav {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+    }
 
     .tool-wrap {
-      max-width:820px;
-      margin:60px auto;
-      background:#111;
-      padding:45px;
-      border-radius:14px;
+      max-width: 820px;
+      margin: 60px auto;
+      background: #111;
+      padding: 45px;
+      border-radius: 14px;
     }
 
     .instructions {
-      max-width:640px;
-      margin:0 auto 40px auto;
-      text-align:left;
+      max-width: 640px;
+      margin: 0 auto 40px auto;
+      text-align: left;
     }
 
-    .instructions ul { padding-left:20px; }
-    .instructions li { margin-bottom:12px; }
+    .instructions p { margin-bottom: 16px; }
+    .instructions ul { padding-left: 20px; margin-bottom: 18px; }
+    .instructions li { margin-bottom: 12px; }
 
-    input { margin:12px 0 22px 0; }
-    button { margin-bottom:30px; }
+    /* INPUT POLISH */
+    input {
+      width: 100%;
+      padding: 16px 18px;
+      font-size: 17px;
+      border-radius: 8px;
+      border: 1px solid #333;
+      background: #0b0b0b;
+      color: #fff;
+      margin: 12px 0 24px 0;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #00ffd5;
+    }
+
+    /* BUTTON POLISH */
+    button {
+      padding: 16px 34px;
+      font-size: 17px;
+      font-weight: bold;
+      background: linear-gradient(135deg, #00ffd5, #00c2a8);
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(0, 255, 213, 0.25);
+    }
 
     .next-step {
-      margin-top:30px;
-      text-align:center;
-      font-style:italic;
-      opacity:0.75;
+      margin-top: 30px;
+      text-align: center;
+      font-style: italic;
+      opacity: 0.75;
     }
 
     footer {
-      margin-top:100px;
-      padding-top:40px;
-      border-top:1px solid #222;
-      text-align:center;
-      opacity:0.7;
+      margin-top: 100px;
+      padding-top: 40px;
+      border-top: 1px solid #222;
+      text-align: center;
+      opacity: 0.7;
     }
   </style>
 </head>
@@ -62,13 +100,13 @@
 
   <div class="instructions">
     <p><strong>What this tool does:</strong><br>
-      Generates a clear blueprint for how your dropshipping store should be structured.</p>
+      Creates a clear blueprint for how your dropshipping store should be structured.</p>
 
     <p><strong>How to use this tool:</strong></p>
     <ul>
       <li>Enter your store niche</li>
       <li>Enter a brand name (real or placeholder)</li>
-      <li>Click Generate Store</li>
+      <li>Click <em>Generate Store</em></li>
       <li>Use the blueprint when building your store</li>
     </ul>
 
@@ -82,7 +120,7 @@
   <input id="brand" placeholder="Brand name">
   <button onclick="build()">Generate Store</button>
 
-  <div id="output"></div>
+  <div id="output" style="margin-top:30px;"></div>
 
   <div class="next-step">
     👉 Next step: Use Supplier Finder to choose fulfilment.
@@ -104,7 +142,8 @@
     const plan = localStorage.getItem("plan") || "free";
 
     if (!(isOwner || plan === "pro")) {
-      output.innerHTML = "🔒 Pro required<br><a href='../pricing.html'>Upgrade to Pro</a>";
+      output.innerHTML =
+        "🔒 Pro required<br><a href='../pricing.html'>Upgrade to Pro</a>";
       return;
     }
 
@@ -113,9 +152,9 @@
       Homepage Structure:<br>
       - Hero product for ${niche.value}<br>
       - Benefits & trust badges<br><br>
-      Pages:<br>
+      Essential Pages:<br>
       - Shop<br>
-      - About<br>
+      - About Us<br>
       - FAQ<br>
       - Contact
     `;
