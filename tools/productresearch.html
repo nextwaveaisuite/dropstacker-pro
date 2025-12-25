@@ -4,48 +4,96 @@
   <title>Product Research — DropStacker Pro</title>
   <link rel="stylesheet" href="../styles/main.css">
   <script src="../scripts/auth.js" defer></script>
+
+  <style>
+    body { line-height: 1.9; }
+
+    h1 { text-align: center; margin-bottom: 35px; }
+
+    .top-nav {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+    }
+
+    .tool-wrap {
+      max-width: 820px;
+      margin: 60px auto;
+      background: #111;
+      padding: 45px;
+      border-radius: 14px;
+    }
+
+    .instructions {
+      max-width: 640px;
+      margin: 0 auto 40px auto;
+      text-align: left;
+    }
+
+    .instructions p { margin-bottom: 16px; }
+    .instructions ul { padding-left: 20px; margin-bottom: 18px; }
+    .instructions li { margin-bottom: 12px; }
+
+    input { margin: 12px 0 22px 0; }
+    button { margin-bottom: 30px; }
+
+    .next-step {
+      margin-top: 30px;
+      text-align: center;
+      font-style: italic;
+      opacity: 0.75;
+    }
+
+    footer {
+      margin-top: 100px;
+      padding-top: 40px;
+      border-top: 1px solid #222;
+      text-align: center;
+      opacity: 0.7;
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- TOP NAV -->
-<div style="padding:20px;background:#111;">
+<div class="top-nav">
   🏠 <a href="../dashboard.html">Dashboard</a> |
   💲 <a href="../pricing.html">Pricing</a> |
   🔙 <a href="javascript:history.back()">Back</a>
 </div>
 
-<div style="max-width:820px;margin:50px auto;background:#111;padding:40px;border-radius:12px;">
+<div class="tool-wrap">
 
   <h1>🔍 Product Research</h1>
 
-  <p><strong>What this tool does:</strong><br>
-  Helps you quickly evaluate whether a product idea is worth pursuing before you build a store.</p>
+  <div class="instructions">
+    <p><strong>What this tool does:</strong><br>
+      Helps you evaluate whether a product idea is worth pursuing before building a store.</p>
 
-  <p><strong>How to use this tool:</strong></p>
-  <ul>
-    <li>Enter a product keyword or niche</li>
-    <li>Click <em>Analyze Market</em></li>
-    <li>Review demand and profit potential</li>
-    <li>Upgrade to Pro to unlock full analysis</li>
-  </ul>
+    <p><strong>How to use this tool:</strong></p>
+    <ul>
+      <li>Enter a product keyword or niche</li>
+      <li>Click <em>Analyze Market</em></li>
+      <li>Review demand and profit potential</li>
+      <li>Upgrade to Pro to unlock full analysis</li>
+    </ul>
 
-  <p><strong>Examples:</strong> belts, pet toys, phone mounts, LED lights</p>
+    <p><strong>Examples:</strong> belts, pet toys, phone mounts, LED lights</p>
+  </div>
 
   <input id="keyword" placeholder="e.g. belts, pet toys, phone mounts">
   <button onclick="analyze()">Analyze Market</button>
 
-  <div id="results" style="margin-top:30px;display:none;">
+  <div id="results" style="display:none;">
     <div id="output"></div>
-
-    <p style="margin-top:20px;opacity:0.7;">
-      👉 <strong>Next step:</strong> If demand looks strong, move to the <em>Store Builder</em> to plan your store.
-    </p>
+    <div class="next-step">
+      👉 Next step: If demand looks strong, move to the Store Builder.
+    </div>
   </div>
+
 </div>
 
-<!-- FOOTER -->
-<footer style="margin-top:80px;text-align:center;opacity:0.6;">
+<footer>
   © 2025 DropStacker Pro · All Rights Reserved<br>
   <a href="../privacy.html">Privacy</a> |
   <a href="../terms.html">Terms</a> |
@@ -55,15 +103,13 @@
 
 <script>
   function hashScore(str, min, max) {
-    let hash = 0;
-    for (let i = 0; i < str.length; i++) {
-      hash = str.charCodeAt(i) + ((hash << 5) - hash);
-    }
-    return Math.abs(hash % (max - min)) + min;
+    let h = 0;
+    for (let i = 0; i < str.length; i++) h = str.charCodeAt(i) + ((h << 5) - h);
+    return Math.abs(h % (max - min)) + min;
   }
 
   function analyze() {
-    const keyword = document.getElementById("keyword").value.trim().toLowerCase();
+    const keyword = keywordInput.value.trim().toLowerCase();
     if (!keyword) return alert("Enter a keyword");
 
     const isOwner = localStorage.getItem("owner") === "true";
@@ -79,14 +125,13 @@
     `;
 
     if (plan === "pro" || isOwner) {
-      html += `⚔️ Competition Level: <strong>${competition < 40 ? "Low" : competition < 70 ? "Medium" : "High"}</strong>`;
+      html += `⚔️ Competition: <strong>${competition < 40 ? "Low" : competition < 70 ? "Medium" : "High"}</strong>`;
     } else {
-      html += `<br><strong>🔒 Pro required for full analysis</strong><br>
-               <a href="../pricing.html">Upgrade to Pro</a>`;
+      html += `<br><strong>🔒 Pro required</strong><br><a href="../pricing.html">Upgrade to Pro</a>`;
     }
 
-    document.getElementById("output").innerHTML = html;
-    document.getElementById("results").style.display = "block";
+    output.innerHTML = html;
+    results.style.display = "block";
   }
 </script>
 
