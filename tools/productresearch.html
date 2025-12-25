@@ -34,8 +34,40 @@
     .instructions ul { padding-left: 20px; margin-bottom: 18px; }
     .instructions li { margin-bottom: 12px; }
 
-    input { margin: 12px 0 22px 0; }
-    button { margin-bottom: 30px; }
+    /* 🔍 INPUT POLISH */
+    input {
+      width: 100%;
+      padding: 16px 18px;
+      font-size: 17px;
+      border-radius: 8px;
+      border: 1px solid #333;
+      background: #0b0b0b;
+      color: #fff;
+      margin: 12px 0 24px 0;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #00ffd5;
+    }
+
+    /* 🎯 BUTTON POLISH */
+    button {
+      padding: 16px 34px;
+      font-size: 17px;
+      font-weight: bold;
+      background: linear-gradient(135deg, #00ffd5, #00c2a8);
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(0, 255, 213, 0.25);
+    }
 
     .next-step {
       margin-top: 30px;
@@ -81,10 +113,10 @@
     <p><strong>Examples:</strong> belts, pet toys, phone mounts, LED lights</p>
   </div>
 
-  <input id="keyword" placeholder="e.g. belts, pet toys, phone mounts">
+  <input id="keywordInput" placeholder="e.g. belts, pet toys, phone mounts">
   <button onclick="analyze()">Analyze Market</button>
 
-  <div id="results" style="display:none;">
+  <div id="results" style="display:none;margin-top:30px;">
     <div id="output"></div>
     <div class="next-step">
       👉 Next step: If demand looks strong, move to the Store Builder.
