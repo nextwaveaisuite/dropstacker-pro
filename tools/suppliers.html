@@ -4,44 +4,86 @@
   <title>Supplier Finder — DropStacker Pro</title>
   <link rel="stylesheet" href="../styles/main.css">
   <script src="../scripts/auth.js" defer></script>
+
+  <style>
+    body { line-height: 1.9; }
+    h1 { text-align:center;margin-bottom:35px; }
+
+    .top-nav { text-align:center;padding:20px;background:#111; }
+
+    .tool-wrap {
+      max-width:820px;
+      margin:60px auto;
+      background:#111;
+      padding:45px;
+      border-radius:14px;
+    }
+
+    .instructions {
+      max-width:640px;
+      margin:0 auto 40px auto;
+      text-align:left;
+    }
+
+    input { margin:12px 0 22px 0; }
+    button { margin-bottom:30px; }
+
+    .next-step {
+      margin-top:30px;
+      text-align:center;
+      font-style:italic;
+      opacity:0.75;
+    }
+
+    footer {
+      margin-top:100px;
+      padding-top:40px;
+      border-top:1px solid #222;
+      text-align:center;
+      opacity:0.7;
+    }
+  </style>
 </head>
 
 <body>
 
-<div style="padding:20px;background:#111;">
+<div class="top-nav">
   🏠 <a href="../dashboard.html">Dashboard</a> |
   💲 <a href="../pricing.html">Pricing</a> |
   🔙 <a href="javascript:history.back()">Back</a>
 </div>
 
-<div style="max-width:820px;margin:50px auto;background:#111;padding:40px;border-radius:12px;">
+<div class="tool-wrap">
 
   <h1>🚚 Supplier Finder</h1>
 
-  <p><strong>What this tool does:</strong><br>
-  Helps you decide the best supplier and fulfilment approach for your product.</p>
+  <div class="instructions">
+    <p><strong>What this tool does:</strong><br>
+      Helps you decide the best supplier and fulfilment approach for your product.</p>
 
-  <p><strong>How to use this tool:</strong></p>
-  <ul>
-    <li>Enter a product name</li>
-    <li>Click <em>Find Suppliers</em></li>
-    <li>Review recommended sourcing strategies</li>
-    <li>Follow the suggested progression</li>
-  </ul>
+    <p><strong>How to use this tool:</strong></p>
+    <ul>
+      <li>Enter a product name</li>
+      <li>Click Find Suppliers</li>
+      <li>Review sourcing strategy</li>
+      <li>Follow the recommended progression</li>
+    </ul>
 
-  <p><strong>Examples:</strong> Pet collars, dog toys, car accessories</p>
+    <p><strong>Examples:</strong> Pet collars, dog toys, car accessories</p>
+  </div>
 
   <input id="product" placeholder="Product name">
   <button onclick="find()">Find Suppliers</button>
 
-  <div id="output" style="margin-top:30px;"></div>
+  <div id="output"></div>
 
-  <p style="margin-top:20px;opacity:0.7;">
-    👉 <strong>Next step:</strong> Start testing with the recommended supplier type.
-  </p>
+  <div class="next-step">
+    👉 Next step: Start testing with the recommended supplier type.
+  </div>
+
 </div>
 
-<footer style="margin-top:80px;text-align:center;opacity:0.6;">
+<footer>
   © 2025 DropStacker Pro · All Rights Reserved<br>
   <a href="../privacy.html">Privacy</a> |
   <a href="../terms.html">Terms</a> |
@@ -55,18 +97,15 @@
     const plan = localStorage.getItem("plan") || "free";
 
     if (!(isOwner || plan === "pro")) {
-      document.getElementById("output").innerHTML =
-        "🔒 Pro required<br><a href='../pricing.html'>Upgrade to Pro</a>";
+      output.innerHTML = "🔒 Pro required<br><a href='../pricing.html'>Upgrade to Pro</a>";
       return;
     }
 
-    const product = product.value;
-
-    document.getElementById("output").innerHTML = `
-      Recommended supplier path for <strong>${product}</strong>:<br><br>
-      - AliExpress (initial testing)<br>
-      - Private agent (scaling orders)<br>
-      - Local warehouse (branding & faster shipping)
+    output.innerHTML = `
+      Recommended supplier path:<br><br>
+      - AliExpress (testing)<br>
+      - Private agent (scaling)<br>
+      - Local warehouse (branding)
     `;
   }
 </script>
