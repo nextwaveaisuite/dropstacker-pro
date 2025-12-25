@@ -1,42 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Product Research — DropStacker Pro</title>
+
   <link rel="stylesheet" href="../styles/main.css">
   <script src="../scripts/auth.js" defer></script>
 
   <style>
     body { line-height: 1.9; }
 
-    h1 { text-align: center; margin-bottom: 35px; }
-
     .top-nav {
       text-align: center;
-      padding: 20px;
+      padding: 18px;
       background: #111;
+    }
+
+    .progress {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin: 30px 0;
+      font-size: 14px;
+    }
+
+    .step {
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: #222;
+      opacity: 0.5;
+    }
+
+    .step.active {
+      background: linear-gradient(135deg, #00ffd5, #00c2a8);
+      color: #000;
+      opacity: 1;
+      font-weight: bold;
     }
 
     .tool-wrap {
       max-width: 860px;
-      margin: 60px auto;
+      margin: 0 auto 80px;
       background: #111;
       padding: 50px;
       border-radius: 16px;
     }
 
+    h1 { text-align: center; margin-bottom: 30px; }
+
     .instructions {
       max-width: 680px;
-      margin: 0 auto 45px auto;
-      text-align: left;
-    }
-
-    .instructions ul {
-      padding-left: 20px;
-      margin-bottom: 20px;
-    }
-
-    .instructions li {
-      margin-bottom: 12px;
+      margin: 0 auto 40px;
     }
 
     input {
@@ -47,12 +61,7 @@
       border: 1px solid #333;
       background: #0b0b0b;
       color: #fff;
-      margin: 14px 0 26px 0;
-    }
-
-    input:focus {
-      outline: none;
-      border-color: #00ffd5;
+      margin-bottom: 25px;
     }
 
     button {
@@ -77,15 +86,20 @@
     .amber { color: #ffcc66; }
     .red { color: #ff5c5c; }
 
-    .verdict {
-      font-size: 20px;
-      margin-bottom: 20px;
+    .next-step {
+      margin-top: 30px;
+      text-align: right;
+    }
+
+    .next-step a {
+      color: #00ffd5;
       font-weight: bold;
+      text-decoration: none;
     }
 
     footer {
-      margin-top: 120px;
-      padding-top: 40px;
+      margin-top: 100px;
+      padding-top: 35px;
       border-top: 1px solid #222;
       text-align: center;
       opacity: 0.7;
@@ -101,26 +115,29 @@
   🔙 <a href="javascript:history.back()">Back</a>
 </div>
 
+<div class="progress">
+  <div class="step active">Product Research</div>
+  <div class="step">Store Builder</div>
+  <div class="step">Supplier Finder</div>
+</div>
+
 <div class="tool-wrap">
 
   <h1>🔍 Product Research</h1>
 
   <div class="instructions">
     <p><strong>What this tool does:</strong><br>
-    Performs multi-signal validation to determine whether a product or niche is worth pursuing.</p>
+    Evaluates whether a product idea is worth pursuing using multi-signal validation.</p>
 
-    <p><strong>How it works:</strong></p>
+    <p><strong>How to use:</strong></p>
     <ul>
-      <li>Analyzes social interest & trend momentum</li>
-      <li>Validates marketplace saturation using review windows</li>
-      <li>Assesses profit structure & competition pressure</li>
-      <li>Produces a clear GO / CAUTION / NO-GO verdict</li>
+      <li>Enter a product or niche keyword</li>
+      <li>Analyze market demand and competition</li>
+      <li>Proceed only if verdict is green</li>
     </ul>
-
-    <p><strong>Examples:</strong> baby shoes, pet toys, posture correctors, car organisers</p>
   </div>
 
-  <input id="keyword" placeholder="Enter product or niche keyword">
+  <input id="keyword" placeholder="e.g. baby shoes, pet toys, phone mounts">
   <button onclick="analyze()">Analyze Market</button>
 
   <div id="results"></div>
@@ -146,31 +163,26 @@
 
   function analyze() {
     const kw = document.getElementById("keyword").value.trim().toLowerCase();
-    if (!kw) return alert("Please enter a keyword");
+    if (!kw) return alert("Enter a keyword");
 
     const base = hash(kw);
-
-    // SIGNALS
-    const social = base % 3;          // 0 weak, 1 moderate, 2 strong
-    const trend = (base >> 1) % 3;    // 0 declining, 1 stable, 2 growing
-    const reviews = 2000 + (base % 7000); // simulated review count
+    const social = base % 3;
+    const trend = (base >> 1) % 3;
+    const reviews = 2000 + (base % 7000);
     const profit = 50 + (base % 40);
-    const competition = (base >> 2) % 3; // 0 low, 1 medium, 2 high
+    const competition = (base >> 2) % 3;
 
-    // REVIEW WINDOW LOGIC (YOUR RULE)
-    let reviewSignal, reviewColor;
+    let reviewSignal = "Ideal validation range";
+    let reviewColor = "green";
+
     if (reviews < 3000) {
       reviewSignal = "Not validated";
       reviewColor = "red";
     } else if (reviews > 7000) {
       reviewSignal = "Oversaturated";
       reviewColor = "amber";
-    } else {
-      reviewSignal = "Ideal validation range";
-      reviewColor = "green";
     }
 
-    // FINAL VERDICT
     let verdict = "🟢 HIGH-CONFIDENCE OPPORTUNITY";
     let verdictColor = "green";
 
@@ -182,34 +194,24 @@
       verdictColor = "amber";
     }
 
-    // RELATED PRODUCTS
-    const related = [
-      kw + " accessories",
-      kw + " bundle",
-      kw + " premium version"
-    ];
+    let nextHTML = "";
+    if (verdictColor === "green") {
+      nextHTML = `
+        <div class="next-step">
+          ➡ <a href="storebuilder.html">Next: Build Your Store</a>
+        </div>
+      `;
+    }
 
     document.getElementById("results").innerHTML = `
       <div class="panel">
-        <div class="verdict ${verdictColor}">${verdict}</div>
-
-        📘 Social Interest: <strong>${["Weak","Moderate","Strong"][social]}</strong><br>
-        📈 Trend Momentum: <strong>${["Declining","Stable","Growing"][trend]}</strong><br>
-        🛒 Marketplace Reviews: <strong>${reviews}</strong>
-        <span class="${reviewColor}">(${reviewSignal})</span><br>
-        💰 Profit Potential: <strong>${profit}/100</strong><br>
-        ⚔️ Competition: <strong>${["Low","Medium","High"][competition]}</strong>
-
-        <hr style="margin:20px 0;border-color:#222">
-
-        <strong>Suggested Related Products to Test:</strong>
-        <ul>
-          <li>${related[0]}</li>
-          <li>${related[1]}</li>
-          <li>${related[2]}</li>
-        </ul>
-
-        <em>Recommended next step:</em> Proceed to the Store Builder if verdict is green.
+        <strong class="${verdictColor}">${verdict}</strong><br><br>
+        📘 Social Interest: ${["Weak","Moderate","Strong"][social]}<br>
+        📈 Trend Momentum: ${["Declining","Stable","Growing"][trend]}<br>
+        🛒 Reviews: ${reviews} <span class="${reviewColor}">(${reviewSignal})</span><br>
+        💰 Profit Potential: ${profit}/100<br>
+        ⚔️ Competition: ${["Low","Medium","High"][competition]}
+        ${nextHTML}
       </div>
     `;
   }
