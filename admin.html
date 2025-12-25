@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Console — DropStacker Pro</title>
+
+  <style>
+    body {
+      background: #0b0b0b;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .admin-box {
+      background: #111;
+      padding: 40px;
+      border-radius: 14px;
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    }
+
+    h1 {
+      margin-bottom: 10px;
+      font-size: 26px;
+    }
+
+    p {
+      opacity: 0.75;
+      margin-bottom: 25px;
+    }
+
+    input {
+      width: 100%;
+      padding: 16px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #333;
+      background: #0b0b0b;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #00ffd5;
+    }
+
+    button {
+      width: 100%;
+      padding: 16px;
+      font-size: 16px;
+      font-weight: bold;
+      background: linear-gradient(135deg, #00ffd5, #00c2a8);
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(0,255,213,0.25);
+    }
+
+    .note {
+      margin-top: 18px;
+      font-size: 13px;
+      opacity: 0.5;
+    }
+
+    .error {
+      color: #ff5c5c;
+      margin-top: 15px;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="admin-box">
+  <h1>🔐 Admin Console</h1>
+  <p>Founder access only</p>
+
+  <input
+    type="password"
+    id="passphrase"
+    placeholder="Enter admin passphrase"
+  >
+
+  <button onclick="login()">Unlock Admin Access</button>
+
+  <div class="error" id="error">
+    Incorrect passphrase
+  </div>
+
+  <div class="note">
+    DropStacker Pro · Owner Access
+  </div>
+</div>
+
+<script>
+  function login() {
+    const input = document.getElementById("passphrase").value;
+
+    // 🔑 CHANGE THIS PASSPHRASE TO WHATEVER YOU WANT
+    const ADMIN_PASSPHRASE = "nextwave-admin-2025";
+
+    if (input === ADMIN_PASSPHRASE) {
+      localStorage.setItem("owner", "true");
+      localStorage.setItem("plan", "pro");
+
+      window.location.href = "dashboard.html";
+    } else {
+      document.getElementById("error").style.display = "block";
+    }
+  }
+</script>
+
+</body>
+</html>
