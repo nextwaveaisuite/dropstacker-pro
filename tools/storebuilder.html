@@ -10,39 +10,43 @@
   <style>
     body { line-height: 1.9; }
 
-    h1 {
-      text-align: center;
-      margin-bottom: 35px;
-    }
-
     .top-nav {
       text-align: center;
-      padding: 20px;
+      padding: 18px;
       background: #111;
+    }
+
+    .progress {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin: 30px 0;
+      font-size: 14px;
+    }
+
+    .step {
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: #222;
+      opacity: 0.5;
+    }
+
+    .step.active {
+      background: linear-gradient(135deg, #00ffd5, #00c2a8);
+      color: #000;
+      opacity: 1;
+      font-weight: bold;
     }
 
     .tool-wrap {
       max-width: 900px;
-      margin: 60px auto;
+      margin: 0 auto 80px;
       background: #111;
       padding: 50px;
       border-radius: 16px;
     }
 
-    .instructions {
-      max-width: 720px;
-      margin: 0 auto 45px auto;
-      text-align: left;
-    }
-
-    .instructions ul {
-      padding-left: 20px;
-      margin-bottom: 20px;
-    }
-
-    .instructions li {
-      margin-bottom: 12px;
-    }
+    h1 { text-align: center; margin-bottom: 30px; }
 
     input {
       width: 100%;
@@ -52,12 +56,7 @@
       border: 1px solid #333;
       background: #0b0b0b;
       color: #fff;
-      margin: 14px 0 26px 0;
-    }
-
-    input:focus {
-      outline: none;
-      border-color: #00ffd5;
+      margin-bottom: 22px;
     }
 
     button {
@@ -72,22 +71,26 @@
     }
 
     .panel {
-      margin-top: 40px;
-      padding: 35px;
+      margin-top: 35px;
+      padding: 30px;
       background: #0b0b0b;
       border-radius: 12px;
     }
 
-    .section-title {
-      font-size: 18px;
-      margin-top: 25px;
-      margin-bottom: 10px;
+    .next-step {
+      margin-top: 30px;
+      text-align: right;
+    }
+
+    .next-step a {
+      color: #00ffd5;
       font-weight: bold;
+      text-decoration: none;
     }
 
     footer {
-      margin-top: 120px;
-      padding-top: 40px;
+      margin-top: 100px;
+      padding-top: 35px;
       border-top: 1px solid #222;
       text-align: center;
       opacity: 0.7;
@@ -103,26 +106,15 @@
   🔙 <a href="javascript:history.back()">Back</a>
 </div>
 
+<div class="progress">
+  <div class="step">Product Research</div>
+  <div class="step active">Store Builder</div>
+  <div class="step">Supplier Finder</div>
+</div>
+
 <div class="tool-wrap">
 
   <h1>🏗 Store Builder</h1>
-
-  <div class="instructions">
-    <p><strong>What this tool does:</strong><br>
-    Generates a high-level commerce blueprint that shows how your dropshipping store should be structured, positioned, and scaled.</p>
-
-    <p><strong>How to use this tool:</strong></p>
-    <ul>
-      <li>Enter a store niche (what you are selling)</li>
-      <li>Enter a brand name (real or placeholder)</li>
-      <li>Generate a full store architecture blueprint</li>
-      <li>Use this blueprint when building or outsourcing your store</li>
-    </ul>
-
-    <p><strong>Examples:</strong><br>
-    Niche: Pet Accessories<br>
-    Brand: PawEssentials</p>
-  </div>
 
   <input id="niche" placeholder="Store niche (e.g. Baby Shoes)">
   <input id="brand" placeholder="Brand name (e.g. TinySteps)">
@@ -144,53 +136,30 @@
   function generate() {
     const niche = document.getElementById("niche").value.trim();
     const brand = document.getElementById("brand").value.trim() || "Your Brand";
-
-    if (!niche) return alert("Please enter a store niche");
+    if (!niche) return alert("Enter a niche");
 
     document.getElementById("output").innerHTML = `
       <div class="panel">
+        <strong>Store Positioning:</strong> ${brand} should focus on trust, emotional benefits, and clarity within the ${niche} niche.<br><br>
 
-        <div class="section-title">🎯 Store Positioning</div>
-        <p>
-          <strong>${brand}</strong> should be positioned as a focused, trust-driven brand within the <strong>${niche}</strong> market.
-          Emphasise emotional benefits, reliability, and problem-solving rather than price competition.
-        </p>
-
-        <div class="section-title">👤 Ideal Customer Profile</div>
+        <strong>Homepage Structure:</strong>
         <ul>
-          <li>Emotion-driven buyer looking for safety, convenience, or improvement</li>
-          <li>Likely to compare options before purchasing</li>
-          <li>Responds strongly to social proof and reassurance</li>
+          <li>Hero promise</li>
+          <li>Problem agitation</li>
+          <li>Benefits & proof</li>
+          <li>Primary CTA</li>
         </ul>
 
-        <div class="section-title">🏠 Homepage Structure</div>
+        <strong>Growth Strategy:</strong>
         <ul>
-          <li>Hero section with clear promise and primary benefit</li>
-          <li>Problem agitation section (why this product matters)</li>
-          <li>Benefits breakdown with visual support</li>
-          <li>Trust signals (reviews, guarantees, badges)</li>
-          <li>Primary call-to-action</li>
+          <li>Start with 1–2 products</li>
+          <li>Add bundles</li>
+          <li>Expand into brand assets</li>
         </ul>
 
-        <div class="section-title">🛒 Product Page Persuasion Map</div>
-        <ul>
-          <li>Above-the-fold emotional hook</li>
-          <li>Benefit-driven copy (not features)</li>
-          <li>Risk reversal (returns, guarantees)</li>
-          <li>Ethical urgency (limited stock, seasonal relevance)</li>
-        </ul>
-
-        <div class="section-title">📈 Long-Term Growth Strategy</div>
-        <ul>
-          <li>Start with 1–2 core products</li>
-          <li>Add complementary accessories</li>
-          <li>Create bundles to increase average order value</li>
-          <li>Build brand trust before aggressive scaling</li>
-        </ul>
-
-        <p><strong>Recommended next step:</strong><br>
-        Proceed to the Supplier Finder to identify the safest fulfilment strategy.</p>
-
+        <div class="next-step">
+          ➡ <a href="suppliers.html">Next: Find Suppliers</a>
+        </div>
       </div>
     `;
   }
